@@ -8,5 +8,4 @@ typedef struct {
 Realty RealtyInit(char housing[30], char vehicle[30]);
 void RealtyRead();
 void RealtyDisplay(Realty realty);
-void BuyNewHousing(Realty realty, Human human);
-void BuyNevVehicle(Realty realty, Human human);
+void BuyNew(Realty realty, Human human);

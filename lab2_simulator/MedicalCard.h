@@ -8,7 +8,7 @@ typedef struct {
 } MedicalCard;
 
 MedicalCard MedicalCardInit(Human human, double weight, double height, char healthstatus[25]);
-void MedicalCardRead();
+void MedicalCardRead(Human human);
 void MedicalcardDisplay(MedicalCard medicalcard);
-double BodyMassIndex(MedicalCard medicalcard);
+void BodyMassIndex(MedicalCard medicalcard);
 void SetHealthStatus(MedicalCard medicalcard);

@@ -8,5 +8,5 @@ typedef struct {
 
 Work WorkInit(char namework[30], int payment);
 void WorkRead();
-void WorkDisplay();
+void WorkDisplay(Work work);
 void Working(Work work, Human human);

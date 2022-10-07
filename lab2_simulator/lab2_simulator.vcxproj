@@ -134,7 +134,11 @@
     <ClInclude Include="Work.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Clothes.cpp" />
     <ClCompile Include="Human.cpp" />
+    <ClCompile Include="MedicalCard.cpp" />
+    <ClCompile Include="Realty.cpp" />
+    <ClCompile Include="Work.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

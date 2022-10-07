@@ -3,9 +3,8 @@
 #include "Clothes.h"
 #include <iostream>
 
-Human HumanInit(int age, char name[20], char sex[20])
+Human HumanInit(int age, char name[40], char sex[20], Clothes clothes)
 {
-    Clothes clothes;
     Human human;
     human.Age = age;
     human.Moneybalance = 1000;
@@ -15,9 +14,9 @@ Human HumanInit(int age, char name[20], char sex[20])
     return human;
 }
 
-void HumanRead()
+void HumanRead(Clothes clothes)
 {
-    char strname[20], strsex[20];
+    char strname[40], strsex[20];
     int age;
     printf("Введите информацию о своем персонаже:\n");
     do {
@@ -32,10 +31,9 @@ void HumanRead()
         printf("Укажите возраст: ");
         scanf("%d", &age);
     } while (age < 0 || age > 120);
-    HumanInit(age, strname, strsex);
+    HumanInit(age, strname, strsex, clothes);
 }
 
-void HumanDisplay(Human human, Clothes clothes) {
+void HumanDisplay(Human human) {
     printf("Имя персонажа: %s\nВозраст персонажа: %d\nПол персонажа: %s\nИгровой баланс: %d\n", human.Name, human.Age, human.Sex, human.Moneybalance);
-    ClothesDisplay(clothes);
 }
