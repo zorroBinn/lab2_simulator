@@ -7,7 +7,6 @@ typedef struct {
 	Clothes clothes;
 } Human;
 
-Human HumanInit(int age, int moneybalance, char name[20], char sex[20], Clothes clothes);
+Human HumanInit(int age, char name[20], char sex[20]);
 void HumanRead();
 void HumanDisplay(Human human);
-void KillHuman(Human human);

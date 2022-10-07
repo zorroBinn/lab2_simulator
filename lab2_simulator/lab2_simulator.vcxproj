@@ -133,6 +133,9 @@
     <ClInclude Include="Realty.h" />
     <ClInclude Include="Work.h" />
   </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Human.cpp" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
