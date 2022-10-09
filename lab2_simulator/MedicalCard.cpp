@@ -3,7 +3,7 @@
 #include <iostream>
 #include "Human.h"
 
-MedicalCard MedicalCardInit(Human human, double weight, double height, char healthstatus[25])
+MedicalCard MedicalCardInit(Human human, double weight, double height, const char healthstatus[25])
 {
     MedicalCard medicalcard;
     medicalcard.human = human;
@@ -35,7 +35,7 @@ void MedicalCardRead(Human human)
 
 void MedicalcardDisplay(MedicalCard medicalcard)
 {
-    printf("Имя персонажа: %s\nВозраст персонажа: %d\nПол персонажа: %s\nРост: % f\nВес : % f\n", medicalcard.human.Name, medicalcard.human.Age, medicalcard.human.Sex, medicalcard.Height, medicalcard.Weight, medicalcard.HealthStatus);
+    printf("Имя персонажа: %s\nВозраст персонажа: %d\nПол персонажа: %s\nРост: % f\nВес : % f\nСтатус здоровья персонажа: %s\n", medicalcard.human.Name, medicalcard.human.Age, medicalcard.human.Sex, medicalcard.Height, medicalcard.Weight, medicalcard.HealthStatus);
 }
 
 void BodyMassIndex(MedicalCard medicalcard) {

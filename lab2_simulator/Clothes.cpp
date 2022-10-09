@@ -2,7 +2,7 @@
 #include "Clothes.h"
 #include <iostream>
 
-Clothes ClothesInit(int conditions, char body[20], char pants[20], char shoes[20])
+Clothes ClothesInit(int conditions, const char body[20], const char pants[20], const char shoes[20])
 {
     Clothes clothes;
     clothes.ClothesStatus = conditions;

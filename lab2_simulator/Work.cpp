@@ -3,7 +3,7 @@
 #include "Human.h"
 #include <iostream>
 
-Work WorkInit(char namework[30], int payment)
+Work WorkInit(const char namework[30], int payment)
 {
 	Work work;
 	strcpy(work.NameWork, namework);

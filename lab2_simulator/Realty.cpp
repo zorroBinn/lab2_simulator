@@ -4,7 +4,7 @@
 #include <iostream>
 #include <conio.h>
 
-Realty RealtyInit(char housing[30], char vehicle[30])
+Realty RealtyInit(const char housing[30], const char vehicle[30])
 {
     Realty realty;
     strcpy(realty.Housing, housing);
