@@ -1,5 +1,6 @@
 #define _CRT_SECURE_NO_WARNINGS
 #include "Clothes.h"
+
 #include <iostream>
 
 Clothes ClothesInit(int conditions, const char body[20], const char pants[20], const char shoes[20])
@@ -12,13 +13,14 @@ Clothes ClothesInit(int conditions, const char body[20], const char pants[20], c
     return clothes;
 }
 
-void ClothesRead()
+Clothes ClothesRead()
 {
+    Clothes clothes;
     int status;
     char strbody[20], strpants[20], strshoes[20];
     printf("Введите информацию об одежде своего персонажа:\n");
+    printf("Верх: ");
     do {
-        printf("Верхняя одежда: ");
         gets_s(strbody);
     } while (strbody[0] == NULL);
     do {
@@ -33,7 +35,11 @@ void ClothesRead()
         printf("Укажите состояние одежды в процентах (от 0 до 100): ");
         scanf("%d", &status);
     } while (status < 0 || status > 100);
-    ClothesInit(status, strbody, strpants, strshoes);
+    clothes.ClothesStatus = status;
+    strcpy(clothes.Body, strbody);
+    strcpy(clothes.Pants, strpants);
+    strcpy(clothes.Shoes, strshoes);
+    return clothes;
 }
 
 void ClothesDisplay(Clothes clothes)
@@ -41,23 +47,33 @@ void ClothesDisplay(Clothes clothes)
     printf("Верхняя одежда: %s\nШтаны: %s\nОбувь: %s\nСостояние одежды: %d%%\n", clothes.Body, clothes.Pants, clothes.Shoes, clothes.ClothesStatus);
 }
 
-void TearClothes(Clothes clothes)
+Clothes TearClothes(Clothes clothes)
 {
+    Clothes newclothes;
+    int newstatus;
     if (clothes.ClothesStatus > 0) {
-        printf("Ваша одежда порвалась!");
-        clothes.ClothesStatus -= 15;
+        printf("Ваша одежда порвалась!\n");
+        newstatus = clothes.ClothesStatus - 15;
         if (clothes.ClothesStatus < 0)
             clothes.ClothesStatus = 0;
+        newclothes = clothes;
+        newclothes.ClothesStatus = newstatus;
+        return newclothes;
     }
 }
 
-void SewUpClothes(Clothes clothes)
+Clothes SewUpClothes(Clothes clothes)
 {
+    int newstatus;
+    Clothes newclothes;
     if (clothes.ClothesStatus > 0) {
-        printf("Вы починили вашу одежду!");
-        clothes.ClothesStatus += 20;
+        printf("Вы починили вашу одежду!\n");
+        newstatus = clothes.ClothesStatus + 20;
         if (clothes.ClothesStatus > 100)
             clothes.ClothesStatus = 100;
+        newclothes = clothes;
+        newclothes.ClothesStatus = newstatus;
+        return newclothes;
     }
 }
 

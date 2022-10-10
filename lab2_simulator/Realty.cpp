@@ -12,11 +12,14 @@ Realty RealtyInit(const char housing[30], const char vehicle[30])
     return realty;
 }
 
-void RealtyRead()
+Realty RealtyRead()
 {
+    Realty realty;
     char strhousing[30] = "Гараж", strvehicle[30] = "Велосипед";
     printf("Начальное жильё: Гараж\nНачальное ТС: Велосипед");
-    RealtyInit(strhousing, strvehicle);
+    strcpy(realty.Housing, strhousing);
+    strcpy(realty.Vehicle, strvehicle);
+    return realty;
 }
 
 void RealtyDisplay(Realty realty)

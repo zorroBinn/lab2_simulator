@@ -11,8 +11,9 @@ Work WorkInit(const char namework[30], int payment)
 	return work;
 }
 
-void WorkRead()
+Work WorkRead()
 {
+	Work work;
 	int payment;
 	char strnamework[30];
 	printf("¬ведите информацию о работе:\n");
@@ -24,7 +25,9 @@ void WorkRead()
 		printf("”кажите оплату за одну рабочую сессию: ");
 		scanf("%d", &payment);
 	} while (payment < 1 || payment > 1000000);
-	WorkInit(strnamework, payment);
+	strcpy(work.NameWork, strnamework);
+	work.Payment = payment;
+	return work;
 }
 
 void WorkDisplay(Work work)

@@ -6,7 +6,7 @@ typedef struct {
 } Clothes;
 
 Clothes ClothesInit(int conditions, const char body[20], const char pants[20], const char shoes[20]);
-void ClothesRead();
+Clothes ClothesRead();
 void ClothesDisplay(Clothes clothes);
-void TearClothes(Clothes clothes);
-void SewUpClothes(Clothes clothes);
+Clothes TearClothes(Clothes clothes);
+Clothes SewUpClothes(Clothes clothes);

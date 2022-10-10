@@ -6,6 +6,6 @@ typedef struct {
 } Realty;
 
 Realty RealtyInit(const char housing[30], const char vehicle[30]);
-void RealtyRead();
+Realty RealtyRead();
 void RealtyDisplay(Realty realty);
 void BuyNew(Realty realty, Human human);
