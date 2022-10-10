@@ -23,7 +23,7 @@ void WorkRead()
 	do {
 		printf("”кажите оплату за одну рабочую сессию: ");
 		scanf("%d", &payment);
-	} while (payment < 1 || payment > 100000);
+	} while (payment < 1 || payment > 1000000);
 	WorkInit(strnamework, payment);
 }
 

@@ -39,7 +39,7 @@ int main() {
 	puts("Инициализация медкарты: ");
 	MedicalCardInit(*human, 76, 1.82, "Здоров");
 	MedicalcardDisplay(*medicalcard);
-	puts("создание медкарты: ");
+	puts("Cоздание медкарты: ");
 	MedicalCardRead(*human);
 	MedicalcardDisplay(*medicalcard);
 	puts("Изменение статуса здоровья в медицинской карте: ");
@@ -51,4 +51,27 @@ int main() {
 	work = (Work*)malloc(sizeof(Work));
 	puts("Инициализация работы: ");
 	WorkInit("Прокурор", 100);
+	WorkDisplay(*work);
+	puts("Cоздание работы: ");
+	WorkRead();
+	WorkDisplay(*work);
+	puts("Работать: ");
+	Working(*work, *human);
+	puts("Игровой баланс денег увеличится: ");
+	HumanDisplay(*human, *clothes);
+
+	puts("Тест структуры Realty: ");
+	Realty* realty;
+	realty = (Realty*)malloc(sizeof(Realty));
+	puts("Инициализация недвижимости: ");
+	RealtyInit("Сарай", "Ноги");
+	RealtyDisplay(*realty);
+	puts("Cоздание недвижимости: ");
+	RealtyRead();
+	RealtyDisplay(*realty);
+	puts("Покупка новой недвижимости: ");
+	BuyNew(*realty, *human);
+	RealtyDisplay(*realty);
+
+	std::cin.get();
 }
