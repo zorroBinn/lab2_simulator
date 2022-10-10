@@ -47,33 +47,23 @@ void ClothesDisplay(Clothes clothes)
     printf("Верхняя одежда: %s\nШтаны: %s\nОбувь: %s\nСостояние одежды: %d%%\n", clothes.Body, clothes.Pants, clothes.Shoes, clothes.ClothesStatus);
 }
 
-Clothes TearClothes(Clothes clothes)
+void TearClothes(Clothes &clothes)
 {
-    Clothes newclothes;
-    int newstatus;
     if (clothes.ClothesStatus > 0) {
         printf("Ваша одежда порвалась!\n");
-        newstatus = clothes.ClothesStatus - 15;
+        clothes.ClothesStatus -= 15;
         if (clothes.ClothesStatus < 0)
             clothes.ClothesStatus = 0;
-        newclothes = clothes;
-        newclothes.ClothesStatus = newstatus;
-        return newclothes;
     }
 }
 
-Clothes SewUpClothes(Clothes clothes)
+void SewUpClothes(Clothes &clothes)
 {
-    int newstatus;
-    Clothes newclothes;
-    if (clothes.ClothesStatus > 0) {
+    if (clothes.ClothesStatus >= 0) {
         printf("Вы починили вашу одежду!\n");
-        newstatus = clothes.ClothesStatus + 20;
+        clothes.ClothesStatus += 20;
         if (clothes.ClothesStatus > 100)
             clothes.ClothesStatus = 100;
-        newclothes = clothes;
-        newclothes.ClothesStatus = newstatus;
-        return newclothes;
     }
 }
 

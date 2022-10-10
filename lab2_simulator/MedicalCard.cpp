@@ -27,8 +27,8 @@ MedicalCard MedicalCardRead(Human human)
         printf("Введите вес в килограммах: ");
         scanf("%d", &weight);
     } while (weight > 550 || weight < 3);
+    printf("Укажите состояние здоровья персонажа: ");
     do {
-        printf("Укажите состояние здоровья персонажа: ");
         gets_s(strhealthstatus);
     } while (strhealthstatus[0] == NULL);
     medicalcard.human = human;
@@ -44,26 +44,26 @@ void MedicalcardDisplay(MedicalCard medicalcard)
 }
 
 void BodyMassIndex(MedicalCard medicalcard) {
-    double Index;
+    double Index, Weight, Height;
     if (medicalcard.Height > 0 && medicalcard.Weight > 0) {
-        Index = medicalcard.Weight / (medicalcard.Height * medicalcard.Height / 1000);
+        Weight = medicalcard.Weight;
+        Height = medicalcard.Height/100;
+        Index = Weight / (Height * Height);
         if (Index > 18.5 && Index < 25.0)
-            printf("У %s нормальный вес", medicalcard.human.Name);
+            printf("\nУ %s нормальный вес, ИМТ=%.2f", medicalcard.human.Name, Index);
         else if (Index <= 18.5)
-            printf("У %s недостаток веса", medicalcard.human.Name);
+            printf("\nУ %s недостаток веса, ИМТ=%.2f", medicalcard.human.Name, Index);
         else
-            printf("У %s избыточный вес", medicalcard.human.Name);
+            printf("\nУ %s избыточный вес, ИМТ=%.2f", medicalcard.human.Name, Index);
     }
 }
 
-void SetHealthStatus(MedicalCard medicalcard)
+void SetHealthStatus(MedicalCard &medicalcard)
 {
-    char strhealthstatus[25];
     if (medicalcard.HealthStatus != NULL) {
         printf("Текущее состояние: %s\nВведите новое состояние: \n", medicalcard.HealthStatus);
         do {
-            gets_s(strhealthstatus);
-        } while (strhealthstatus[0] == NULL);
+            gets_s(medicalcard.HealthStatus);
+        } while (medicalcard.HealthStatus[0] == NULL);
     }
-    
 }

@@ -47,9 +47,6 @@ void HumanDisplay(Human human, Clothes clothes) {
     ClothesDisplay(human.clothes);
 }
 
-Human HumanUpgradeClothes(Human human, Clothes clothes) {
-    Human humannew;
-    humannew = human;
-    humannew.clothes = clothes;
-    return humannew;
+void HumanUpgradeClothes(Human &human, Clothes clothes) {
+    human.clothes = clothes;
 }

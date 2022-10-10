@@ -9,4 +9,4 @@ typedef struct {
 Work WorkInit(const char namework[30], int payment);
 Work WorkRead();
 void WorkDisplay(Work work);
-void Working(Work work, Human human);
+void Working(Work work, Human &human);

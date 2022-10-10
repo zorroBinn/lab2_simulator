@@ -1,5 +1,6 @@
 #define _CRT_SECURE_NO_WARNINGS
 #include <iostream>
+#include <conio.h>
 #include <Windows.h>
 #include "Human.h"
 #include "Clothes.h"
@@ -25,13 +26,13 @@ int main() {
 	ClothesDisplay(*clothes);
 	puts("\nРучное изменение одежды и вывод всей информации о человеке на экран: ");
 	*clothes = ClothesRead();
-	*human = HumanUpgradeClothes(*human, *clothes);
+	HumanUpgradeClothes(*human, *clothes);
 	HumanDisplay(*human, *clothes);
 	puts("\nПорвать одежду: ");
-	*clothes = TearClothes(*clothes);
+	TearClothes(*clothes);
 	ClothesDisplay(*clothes);
 	puts("\nЗашить одежду: ");
-	*clothes = SewUpClothes(*clothes);
+	SewUpClothes(*clothes);
 	ClothesDisplay(*clothes);
 	
 	puts("\nТест структуры MedicalCard: ");
@@ -43,6 +44,8 @@ int main() {
 	puts("\nCоздание медкарты: ");
 	*medicalcard = MedicalCardRead(*human);
 	MedicalcardDisplay(*medicalcard);
+	puts("\nРассчёт ИМТ: ");
+	BodyMassIndex(*medicalcard);
 	puts("\nИзменение статуса здоровья в медицинской карте: ");
 	SetHealthStatus(*medicalcard);
 	MedicalcardDisplay(*medicalcard);
@@ -50,7 +53,7 @@ int main() {
 	puts("\nТест структуры Work: ");
 	Work* work;
 	work = (Work*)malloc(sizeof(Work));
-	puts("\nИнициализация работы: ");
+	puts("Инициализация работы: ");
 	*work = WorkInit("Прокурор", 100);
 	WorkDisplay(*work);
 	puts("\nCоздание работы: ");
@@ -64,7 +67,7 @@ int main() {
 	puts("\nТест структуры Realty: ");
 	Realty* realty;
 	realty = (Realty*)malloc(sizeof(Realty));
-	puts("\nИнициализация недвижимости: ");
+	puts("\nИнициализация недвижимости: \n");
 	*realty = RealtyInit("Сарай", "Ноги");
 	RealtyDisplay(*realty);
 	puts("\nCоздание недвижимости: ");
@@ -74,5 +77,5 @@ int main() {
 	BuyNew(*realty, *human);
 	RealtyDisplay(*realty);
 
-	std::cin.get();
+	_getch();
 }

@@ -27,7 +27,7 @@ void RealtyDisplay(Realty realty)
     printf("Жильё: %s\nТранспортное средство: %s\n", realty.Housing, realty.Vehicle);
 }
 
-void BuyNew(Realty realty, Human human)
+void BuyNew(Realty realty, Human &human)
 {
     int choice, flag;
     char strbuynew[30];
@@ -39,7 +39,7 @@ void BuyNew(Realty realty, Human human)
         if (choice != '2') flag++;
         if (choice != '3') flag++;
         if (choice != '4') flag++;
-    } while (flag == 5);
+    } while (flag == 4);
     flag = 0;
     switch (choice) {
     case '1': {

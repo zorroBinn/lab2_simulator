@@ -32,10 +32,10 @@ Work WorkRead()
 
 void WorkDisplay(Work work)
 {
-	printf("Место работы: %s\nОплата за работу: %d", work.NameWork, work.Payment);
+	printf("Место работы: %s\nОплата за работу: %d\n", work.NameWork, work.Payment);
 }
 
-void Working(Work work, Human human)
+void Working(Work work, Human &human)
 {
 	if (human.Moneybalance >= 0) {
 		printf("Вы поработали и получили %d рублей!", work.Payment);

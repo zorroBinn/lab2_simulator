@@ -11,4 +11,4 @@ MedicalCard MedicalCardInit(Human human, int weight, int height, const char heal
 MedicalCard MedicalCardRead(Human human);
 void MedicalcardDisplay(MedicalCard medicalcard);
 void BodyMassIndex(MedicalCard medicalcard);
-void SetHealthStatus(MedicalCard medicalcard);
+void SetHealthStatus(MedicalCard &medicalcard);
