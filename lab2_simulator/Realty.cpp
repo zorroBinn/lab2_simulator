@@ -24,7 +24,7 @@ Realty RealtyRead()
 
 void RealtyDisplay(Realty realty)
 {
-    printf("Жильё: %s\nТранспортное средство: %s\n", realty.Housing, realty.Vehicle);
+    printf("\nЖильё: %s\nТранспортное средство: %s\n", realty.Housing, realty.Vehicle);
 }
 
 void BuyNew(Realty realty, Human &human)
@@ -104,5 +104,5 @@ void BuyNew(Realty realty, Human &human)
     }
     }
     if (flag)
-        printf("Недостаточно денег");
+        printf("Недостаточно денег\n");
 }

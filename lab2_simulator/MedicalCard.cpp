@@ -47,8 +47,8 @@ void BodyMassIndex(MedicalCard medicalcard) {
     double Index, Weight, Height;
     if (medicalcard.Height > 0 && medicalcard.Weight > 0) {
         Weight = medicalcard.Weight;
-        Height = medicalcard.Height/100;
-        Index = Weight / (Height * Height);
+        Height = medicalcard.Height;
+        Index = Weight / (Height * Height/10000);
         if (Index > 18.5 && Index < 25.0)
             printf("\nÓ %s םמנלאכüםûי גוס, ÈÌÒ=%.2f", medicalcard.human.Name, Index);
         else if (Index <= 18.5)
