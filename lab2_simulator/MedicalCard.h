@@ -10,6 +10,7 @@ class MedicalCard
 public:
 	MedicalCard();
 	MedicalCard(Human human, int weight, int height, const char healthstatus[25]);
+	void MedicalCardRead(Human human);
 	void MedicalcardDisplay();
 	void BodyMassIndex();
 	void SetHealthStatus();

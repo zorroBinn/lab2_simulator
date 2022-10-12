@@ -8,9 +8,9 @@ class Clothes
 
 public:
 	Clothes();
-	Clothes(int clothesstatus);
 	Clothes(int conditions, const char body[20], const char pants[20], const char shoes[20]);
 	void ClothesRead();
+	void ClothesDisplay();
 	void TearClothes();
 	void SewUpClothes();
 };

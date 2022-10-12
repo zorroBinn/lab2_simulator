@@ -9,7 +9,8 @@ class Work
 public:
 	Work();
 	Work(const char namework[30], int payment);
+	void WorkRead();
 	void WorkDisplay();
-	void Working();
+	void Working(Human human);
 };
 

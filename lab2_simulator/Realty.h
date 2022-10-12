@@ -8,7 +8,8 @@ class Realty
 public:
 	Realty();
 	Realty(const char housing[30], const char vehicle[30]);
+	void RealtyRead();
 	void RealtyDisplay();
-	void BuyNew();
+	void BuyNew(Human human);
 };
 
