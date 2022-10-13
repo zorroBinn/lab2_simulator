@@ -7,7 +7,6 @@
 #include "Realty.h"
 #include "Work.h"
 
-
 int main() {
 	SetConsoleCP(1251);
 	SetConsoleOutputCP(1251);
@@ -72,7 +71,7 @@ int main() {
 		realtyes[i]->RealtyRead();
 	}
 	std::cout << "\nТест методов:\n";
-	human->EarnMoney(1000000000); //чит на деньги (для теста)
+	human->ChangeMoney(1000000000); //чит на деньги (для теста)
 	for (int i = 0; i < 3; i++) {
 		realtyes[i]->BuyNew(*human);
 		realtyes[i]->RealtyDisplay();
@@ -80,8 +79,8 @@ int main() {
 	for (int i = 0; i < 3; i++) {
 		delete realtyes[i];
 	}
-
 	delete human, clothes1, medicalkard;
+	
 	std::cin.get(); 
 	std::cin.get();
 }

@@ -1,6 +1,6 @@
 #include "Human.h"
 #include <iostream>
-
+//Конструктор без параметров
 Human::Human()
 {
 	this->Age = 0;
@@ -9,7 +9,7 @@ Human::Human()
 	strcpy_s(this->Sex, "");
 	this->clothes = Clothes();
 }
-
+//Конструктор с параметрами
 Human::Human(int age, const char name[20], const char sex[20], Clothes clothes)
 {
 	this->Age = age;
@@ -18,7 +18,7 @@ Human::Human(int age, const char name[20], const char sex[20], Clothes clothes)
 	strcpy_s(this->Sex, sex);
 	this->clothes = clothes;
 }
-
+//Ввод информации о персонаже с клавиатуры
 void Human::HumanRead()
 {
 	char strname[20], strsex[20];
@@ -36,31 +36,24 @@ void Human::HumanRead()
 	this->Moneybalance = 1000;
 	this->clothes = clothes;
 }
-
-
+//Вывод информации о персонаже
 void Human::HumanDisplay()
 {
 	std::cout << "\nИмя персонажа: " << Name << "\nПол персонажа: " << Sex << "\nВозраст персонажа: " << Age << "\nИгровой баланс денег: " << Moneybalance << "\nОдежда персонажа:\n";
 	clothes.ClothesDisplay();
 }
-
+//Вывод имени, пола, возраста (для медкарты)
 void Human::HumanNameSexAgeDisplay()
 {
 	std::cout << "\nИмя персонажа: " << Name << "\nПол персонажа: " << Sex << "\nВозраст персонажа: " << Age;
 }
-
-void Human::EarnMoney(long int money) 
+//Метод изменения баланса
+void Human::ChangeMoney(long int money) 
 {
 	long int Balance = (MoneyBalanceDisplay() + money);
 	this->Moneybalance = Balance;
 }
-
-void Human::SpendMoney(long int money) 
-{
-	long int Balance = (MoneyBalanceDisplay() - money);
-	this->Moneybalance = Balance;
-}
-
+//Метод вывода баланса
 long int Human::MoneyBalanceDisplay()
 {
 	return this->Moneybalance;

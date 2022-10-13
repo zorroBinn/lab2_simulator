@@ -1,6 +1,6 @@
 #include "MedicalCard.h"
 #include <iostream>
-
+//Конструктор без параметров
 MedicalCard::MedicalCard()
 {
     this->Weight = 0;
@@ -8,7 +8,7 @@ MedicalCard::MedicalCard()
     strcpy_s(this->HealthStatus, "");
     this->human = Human();
 }
-
+//Конструктор с параметрами
 MedicalCard::MedicalCard(Human human, int weight, int height, const char healthstatus[25])
 {
 	this->Weight = weight;
@@ -16,7 +16,7 @@ MedicalCard::MedicalCard(Human human, int weight, int height, const char healths
 	strcpy_s(this->HealthStatus, healthstatus);
 	this->human = human;
 }
-
+//Ввод информации о медкарте с клавиатуры
 void MedicalCard::MedicalCardRead(Human human)
 {
     int weight, height;
@@ -32,13 +32,13 @@ void MedicalCard::MedicalCardRead(Human human)
     this->Weight = weight;
     this->Height = height;
 }
-
+//Вывод информации о медкарте
 void MedicalCard::MedicalcardDisplay()
 {
     human.HumanNameSexAgeDisplay();
     std::cout << "\nРост: " << Height << "\nВес: " << Weight << "\nСтатус здоровья: " << HealthStatus;
 }
-
+//Метод рассчёта индекса массы тела персонажа
 void MedicalCard::BodyMassIndex()
 {
     double Index, weight, height;
@@ -54,7 +54,7 @@ void MedicalCard::BodyMassIndex()
             std::cout << "Избыточный вес, ИМТ = " << Index;
     }
 }
-
+//Метод изменения статуса здоровья
 void MedicalCard::SetHealthStatus()
 {
     if (HealthStatus != NULL) {
