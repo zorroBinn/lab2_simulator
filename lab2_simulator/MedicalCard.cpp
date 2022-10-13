@@ -3,13 +3,17 @@
 
 MedicalCard::MedicalCard()
 {
+    this->Weight = 0;
+    this->Height = 0;
+    strcpy_s(this->HealthStatus, "");
+    this->human = Human();
 }
 
 MedicalCard::MedicalCard(Human human, int weight, int height, const char healthstatus[25])
 {
 	this->Weight = weight;
 	this->Height = height;
-	strcpy(this->HealthStatus, healthstatus);
+	strcpy_s(this->HealthStatus, healthstatus);
 	this->human = human;
 }
 
@@ -24,7 +28,7 @@ void MedicalCard::MedicalCardRead(Human human)
     std::cout << "\n”кажите статус здоровь€ персонажа: ";
     std::cin >> strstatus;
     this->human = human;
-    strcpy(this->HealthStatus, strstatus);
+    strcpy_s(this->HealthStatus, strstatus);
     this->Weight = weight;
     this->Height = height;
 }

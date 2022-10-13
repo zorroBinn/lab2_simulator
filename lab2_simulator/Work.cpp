@@ -3,11 +3,19 @@
 
 Work::Work()
 {
+	strcpy_s(this->NameWork, "");
+	this->Payment = 0;
 }
 
 Work::Work(const char namework[30], int payment)
 {
-	strcpy(this->NameWork, namework);
+	strcpy_s(this->NameWork, namework);
+	this->Payment = payment;
+}
+
+void Work::WorkInit(const char namework[30], int payment)
+{
+	strcpy_s(this->NameWork, namework);
 	this->Payment = payment;
 }
 
@@ -19,7 +27,7 @@ void Work::WorkRead()
 	std::cin >> strnamework;
 	std::cout << "\nУкажите оплату за работу: ";
 	std::cin >> payment;
-	strcpy(this->NameWork, strnamework);
+	strcpy_s(this->NameWork, strnamework);
 	this->Payment = payment;
 }
 
@@ -30,8 +38,6 @@ void Work::WorkDisplay()
 
 void Work::Working(Human human)
 {
-	if (human.Moneybalance >= 0) {
-		std::cout << "\nЗа свою работу вы получили " << Payment << "р!";
-		human.Moneybalance += Payment;
-	}
+	std::cout << "\nЗа свою работу вы получили " << Payment << "р!";
+	human.Moneybalance += Payment;
 }

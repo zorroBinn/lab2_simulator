@@ -4,20 +4,22 @@
 
 Realty::Realty()
 {
+    strcpy_s(this->Housing, "");
+    strcpy_s(this->Vehicle, "");
 }
 
 Realty::Realty(const char housing[30], const char vehicle[30])
 {
-	strcpy(this->Housing, housing);
-	strcpy(this->Vehicle, vehicle);
+	strcpy_s(this->Housing, housing);
+	strcpy_s(this->Vehicle, vehicle);
 }
 
 void Realty::RealtyRead()
 {
 	char strhousing[30] = "Гараж", strvehicle[30] = "Велосипед";
 	std::cout << "\nНачальное жильё: " << strhousing << "\nНачальное ТО: " << strvehicle;
-	strcpy(this->Housing, strhousing);
-	strcpy(this->Vehicle, strvehicle);
+	strcpy_s(this->Housing, strhousing);
+	strcpy_s(this->Vehicle, strvehicle);
 }
 
 void Realty::RealtyDisplay()
@@ -44,8 +46,8 @@ void Realty::BuyNew(Human human)
         if (human.Moneybalance > 3000000) {
             std::cout << "Вы купили квартиру за 3 000 000р!";
             human.Moneybalance -= 3000000;
-            strcpy(strbuynew, "Квартира");
-            Realty(strbuynew, Vehicle);
+            strcpy_s(strbuynew, "Квартира");
+            this->Realty::Realty(strbuynew, Vehicle);
         }
         else flag = 1;
         break;
@@ -54,8 +56,8 @@ void Realty::BuyNew(Human human)
         if (human.Moneybalance > 7000000) {
             std::cout << "Вы купили коттедж за 7 000 000р!";
             human.Moneybalance -= 7000000;
-            strcpy(strbuynew, "Коттедж");
-            Realty(strbuynew, Vehicle);
+            strcpy_s(strbuynew, "Коттедж");
+            this->Realty::Realty(strbuynew, Vehicle);
         }
         else flag = 1;
         break;
@@ -64,8 +66,8 @@ void Realty::BuyNew(Human human)
         if (human.Moneybalance > 20000000) {
             std::cout << "Вы купили виллу за 20 000 000р!";
             human.Moneybalance -= 20000000;
-            strcpy(strbuynew, "Вилла");
-            Realty(strbuynew, Vehicle);
+            strcpy_s(strbuynew, "Вилла");
+            this->Realty::Realty(strbuynew, Vehicle);
         }
         else flag = 1;
         break;
@@ -74,8 +76,8 @@ void Realty::BuyNew(Human human)
         if (human.Moneybalance > 100000000) {
             std::cout << "Вы купили Дворец за 100 000 000р!";
             human.Moneybalance -= 100000000;
-            strcpy(strbuynew, "Дворец");
-            Realty(strbuynew, Vehicle);
+            strcpy_s(strbuynew, "Дворец");
+            this->Realty::Realty(strbuynew, Vehicle);
         }
         else flag = 1;
         break;
@@ -84,8 +86,8 @@ void Realty::BuyNew(Human human)
         if (human.Moneybalance > 1000000) {
             std::cout << "Вы купили мотоцикл за 1 000 000р!";
             human.Moneybalance -= 1000000;
-            strcpy(strbuynew, "Мотоцикл");
-            Realty(Housing, strbuynew);
+            strcpy_s(strbuynew, "Мотоцикл");
+            this->Realty::Realty(Housing, strbuynew);
         }
         else flag = 1;
         break;
@@ -94,8 +96,8 @@ void Realty::BuyNew(Human human)
         if (human.Moneybalance > 2000000) {
             std::cout << "Вы купили автомобиль за 2 000 000р!";
             human.Moneybalance -= 2000000;
-            strcpy(strbuynew, "Автомобиль");
-            Realty(Housing, strbuynew);
+            strcpy_s(strbuynew, "Автомобиль");
+            this->Realty::Realty(Housing, strbuynew);
         }
         else flag = 1;
         break;

@@ -3,14 +3,19 @@
 
 Human::Human()
 {
+	this->Age = 0;
+	strcpy_s(this->Name, "");
+	this->Moneybalance = 0;
+	strcpy_s(this->Sex, "");
+	this->clothes = Clothes();
 }
 
 Human::Human(int age, const char name[20], const char sex[20], Clothes clothes)
 {
 	this->Age = age;
-	strcpy(this->Name, name);
+	strcpy_s(this->Name, name);
 	this->Moneybalance = 1000;
-	strcpy(this->Sex, sex);
+	strcpy_s(this->Sex, sex);
 	this->clothes = clothes;
 }
 
@@ -25,8 +30,8 @@ void Human::HumanRead()
 	std::cout << "Возраст: ";
 	std::cin >> age;
 	this->Age = age;
-	strcpy(this->Name, strname);
-	strcpy(this->Sex, strsex);
+	strcpy_s(this->Name, strname);
+	strcpy_s(this->Sex, strsex);
 	clothes.ClothesRead();
 	this->Moneybalance = 1000;
 	this->clothes = clothes;
@@ -35,7 +40,7 @@ void Human::HumanRead()
 
 void Human::HumanDisplay()
 {
-	std::cout << "\nИмя персонажа: " << Name << "\nПол персонажа: " << Sex << "\nВозраст персонажа: " << Age << "\nИгровой баланс денег: " << Moneybalance;
+	std::cout << "\nИмя персонажа: " << Name << "\nПол персонажа: " << Sex << "\nВозраст персонажа: " << Age << "\nИгровой баланс денег: " << Moneybalance << "\nОдежда персонажа:\n";
 	clothes.ClothesDisplay();
 }
 

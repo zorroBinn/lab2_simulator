@@ -8,7 +8,7 @@ class Human
 	Clothes clothes;
 
 public:
-	int Moneybalance;
+	long int Moneybalance;
 	Human();
 	Human(int age, const char name[20], const char sex[20], Clothes clothes);
 	void HumanRead();
