@@ -39,7 +39,9 @@ void BuyNew(Realty &realty, Human &human)
         if (choice != '2') flag++;
         if (choice != '3') flag++;
         if (choice != '4') flag++;
-    } while (flag == 4);
+        if (choice != '5') flag++;
+        if (choice != '6') flag++;
+    } while (flag == 6);
     flag = 0;
     switch (choice) {
     case '1': {
