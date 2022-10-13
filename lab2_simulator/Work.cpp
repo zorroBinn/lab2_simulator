@@ -39,5 +39,5 @@ void Work::WorkDisplay()
 void Work::Working(Human human)
 {
 	std::cout << "\nЗа свою работу вы получили " << Payment << "р!";
-	human.Moneybalance += Payment;
+	human.EarnMoney(Payment);
 }

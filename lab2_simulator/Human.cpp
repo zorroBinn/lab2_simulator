@@ -48,3 +48,20 @@ void Human::HumanNameSexAgeDisplay()
 {
 	std::cout << "\nИмя персонажа: " << Name << "\nПол персонажа: " << Sex << "\nВозраст персонажа: " << Age;
 }
+
+void Human::EarnMoney(long int money) 
+{
+	long int Balance = (MoneyBalanceDisplay() + money);
+	this->Moneybalance = Balance;
+}
+
+void Human::SpendMoney(long int money) 
+{
+	long int Balance = (MoneyBalanceDisplay() - money);
+	this->Moneybalance = Balance;
+}
+
+long int Human::MoneyBalanceDisplay()
+{
+	return this->Moneybalance;
+}

@@ -62,7 +62,6 @@ int main() {
 	std::cout << "\nТест методов:\n";
 	for (int i = 0; i < 3; i++) {
 		works[i].Working(*human);
-		std::cout << "\nИгровой баланс: " << human->Moneybalance;
 	}
 	delete[] works;
 
@@ -73,7 +72,7 @@ int main() {
 		realtyes[i]->RealtyRead();
 	}
 	std::cout << "\nТест методов:\n";
-	human->Moneybalance = 1000000000; //чит-код на деньги (для теста)
+	human->EarnMoney(1000000000); //чит на деньги (для теста)
 	for (int i = 0; i < 3; i++) {
 		realtyes[i]->BuyNew(*human);
 		realtyes[i]->RealtyDisplay();
@@ -81,7 +80,6 @@ int main() {
 	for (int i = 0; i < 3; i++) {
 		delete realtyes[i];
 	}
-
 
 	delete human, clothes1, medicalkard;
 	std::cin.get(); 
