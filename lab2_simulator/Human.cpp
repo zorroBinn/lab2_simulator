@@ -2,7 +2,7 @@
 #include "Human.h"
 #include "Clothes.h"
 #include <iostream>
-
+//Инициализация персонажа
 Human HumanInit(int age, const char name[40], const char sex[20], Clothes clothes)
 {
     Human human;
@@ -13,7 +13,7 @@ Human HumanInit(int age, const char name[40], const char sex[20], Clothes clothe
     human.clothes = clothes;
     return human;
 }
-
+//Ввод персонажа с клавиатуры
 Human HumanRead()
 {
     Clothes clothes;
@@ -41,12 +41,12 @@ Human HumanRead()
     human.clothes = clothes;
     return human;
 }
-
+//Вывод информации о персонаже
 void HumanDisplay(Human human, Clothes clothes) {
     printf("Имя персонажа: %s\nВозраст персонажа: %d\nПол персонажа: %s\nИгровой баланс: %d\n", human.Name, human.Age, human.Sex, human.Moneybalance);
     ClothesDisplay(human.clothes);
 }
-
+//Функция обновления одежды персонажа
 void HumanUpgradeClothes(Human &human, Clothes clothes) {
     human.clothes = clothes;
 }

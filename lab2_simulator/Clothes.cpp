@@ -1,8 +1,7 @@
 #define _CRT_SECURE_NO_WARNINGS
 #include "Clothes.h"
-
 #include <iostream>
-
+//Инициализация одежды
 Clothes ClothesInit(int conditions, const char body[20], const char pants[20], const char shoes[20])
 {
     Clothes clothes;
@@ -12,7 +11,7 @@ Clothes ClothesInit(int conditions, const char body[20], const char pants[20], c
     strcpy(clothes.Shoes, shoes);
     return clothes;
 }
-
+//Ввод одежды через клавиатуру
 Clothes ClothesRead()
 {
     Clothes clothes;
@@ -41,12 +40,12 @@ Clothes ClothesRead()
     strcpy(clothes.Shoes, strshoes);
     return clothes;
 }
-
+//Вывод информации об одежде
 void ClothesDisplay(Clothes clothes)
 {
     printf("Верхняя одежда: %s\nШтаны: %s\nОбувь: %s\nСостояние одежды: %d%%\n", clothes.Body, clothes.Pants, clothes.Shoes, clothes.ClothesStatus);
 }
-
+//Функия "Порвать одежду"
 void TearClothes(Clothes &clothes)
 {
     if (clothes.ClothesStatus > 0) {
@@ -56,7 +55,7 @@ void TearClothes(Clothes &clothes)
             clothes.ClothesStatus = 0;
     }
 }
-
+//Функция "Починить одежду"
 void SewUpClothes(Clothes &clothes)
 {
     if (clothes.ClothesStatus >= 0) {

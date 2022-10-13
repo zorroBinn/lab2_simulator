@@ -2,7 +2,7 @@
 #include "Work.h"
 #include "Human.h"
 #include <iostream>
-
+//Инициализация работы
 Work WorkInit(const char namework[30], int payment)
 {
 	Work work;
@@ -10,7 +10,7 @@ Work WorkInit(const char namework[30], int payment)
 	work.Payment = payment;
 	return work;
 }
-
+//Заполнение информации о работе с клавиатуры
 Work WorkRead()
 {
 	Work work;
@@ -23,18 +23,18 @@ Work WorkRead()
 	} while (strnamework[0] == NULL);
 	do {
 		printf("Укажите оплату за одну рабочую сессию: ");
-		scanf("%d", &payment);
+		scanf("%ld", &payment);
 	} while (payment < 1 || payment > 1000000);
 	strcpy(work.NameWork, strnamework);
 	work.Payment = payment;
 	return work;
 }
-
+//Вывод информации о работе
 void WorkDisplay(Work work)
 {
 	printf("Место работы: %s\nОплата за работу: %d\n", work.NameWork, work.Payment);
 }
-
+//Функция "Работать"
 void Working(Work work, Human &human)
 {
 	if (human.Moneybalance >= 0) {

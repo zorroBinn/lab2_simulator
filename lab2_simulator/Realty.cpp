@@ -3,7 +3,7 @@
 #include "Human.h"
 #include <iostream>
 #include <conio.h>
-
+//Инициализация недвижимости
 Realty RealtyInit(const char housing[30], const char vehicle[30])
 {
     Realty realty;
@@ -11,7 +11,7 @@ Realty RealtyInit(const char housing[30], const char vehicle[30])
     strcpy(realty.Vehicle, vehicle);
     return realty;
 }
-
+//Начальное заполнение недвижимости
 Realty RealtyRead()
 {
     Realty realty;
@@ -21,13 +21,13 @@ Realty RealtyRead()
     strcpy(realty.Vehicle, strvehicle);
     return realty;
 }
-
+//Вывод информации о недвижимости на экран
 void RealtyDisplay(Realty realty)
 {
     printf("\nЖильё: %s\nТранспортное средство: %s\n", realty.Housing, realty.Vehicle);
 }
-
-void BuyNew(Realty realty, Human &human)
+//Функция покупки новой недвижимости
+void BuyNew(Realty &realty, Human &human)
 {
     int choice, flag;
     char strbuynew[30];
@@ -47,7 +47,7 @@ void BuyNew(Realty realty, Human &human)
             printf("Вы купили квартиру за 3 000 000р!");
             human.Moneybalance -= 3000000;
             strcpy(strbuynew, "Квартира");
-            RealtyInit(strbuynew, realty.Vehicle);
+            realty = RealtyInit(strbuynew, realty.Vehicle);
         }
         else flag = 1;
         break;
@@ -57,7 +57,7 @@ void BuyNew(Realty realty, Human &human)
             printf("Вы купили коттедж за 7 000 000р!");
             human.Moneybalance -= 7000000;
             strcpy(strbuynew, "Коттедж");
-            RealtyInit(strbuynew, realty.Vehicle);
+            realty = RealtyInit(strbuynew, realty.Vehicle);
         }
         else flag = 1;
         break;
@@ -67,7 +67,7 @@ void BuyNew(Realty realty, Human &human)
             printf("Вы купили виллу за 20 000 000р!");
             human.Moneybalance -= 20000000;
             strcpy(strbuynew, "Вилла");
-            RealtyInit(strbuynew, realty.Vehicle);
+            realty = RealtyInit(strbuynew, realty.Vehicle);
         }
         else flag = 1;
         break;
@@ -77,7 +77,7 @@ void BuyNew(Realty realty, Human &human)
             printf("Вы купили Дворец за 100 000 000р!");
             human.Moneybalance -= 100000000;
             strcpy(strbuynew, "Дворец");
-            RealtyInit(strbuynew, realty.Vehicle);
+            realty = RealtyInit(strbuynew, realty.Vehicle);
         }
         else flag = 1;
         break;
@@ -87,7 +87,7 @@ void BuyNew(Realty realty, Human &human)
             printf("Вы купили мотоцикл за 1 000 000р!");
             human.Moneybalance -= 1000000;
             strcpy(strbuynew, "Мотоцикл");
-            RealtyInit(realty.Housing, strbuynew);
+            realty = RealtyInit(realty.Housing, strbuynew);
         }
         else flag = 1;
         break;
@@ -97,7 +97,7 @@ void BuyNew(Realty realty, Human &human)
             printf("Вы купили автомобиль за 2 000 000р!");
             human.Moneybalance -= 2000000;
             strcpy(strbuynew, "Автомобиль");
-            RealtyInit(realty.Housing, strbuynew);
+            realty = RealtyInit(realty.Housing, strbuynew);
         }
         else flag = 1;
         break;

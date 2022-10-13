@@ -13,8 +13,8 @@ int main() {
 	SetConsoleOutputCP(1251);
 	
 	puts("Создание персонажа (тест структуры Human и Clothes:");
-	Human* human;
-	Clothes* clothes;
+	Human* human; //Динамическая переменная типа человек
+	Clothes* clothes; //Динамическая переменная типа одежда
 	human = (Human*)malloc(sizeof(Human));
 	clothes = (Clothes*)malloc(sizeof(Clothes));
 	puts("Создание персонажа: ");
@@ -36,22 +36,21 @@ int main() {
 	ClothesDisplay(*clothes);
 	
 	puts("\nТест структуры MedicalCard: ");
-	MedicalCard* medicalcard;
-	medicalcard = (MedicalCard*)malloc(sizeof(MedicalCard));
+	MedicalCard medicalcard; //Статическая переменная типа медкарта
 	puts("\nИнициализация медкарты: ");
-	*medicalcard = MedicalCardInit(*human, 76, 182, "Здоров");
-	MedicalcardDisplay(*medicalcard);
+	medicalcard = MedicalCardInit(*human, 76, 182, "Здоров");
+	MedicalcardDisplay(medicalcard);
 	puts("\nCоздание медкарты: ");
-	*medicalcard = MedicalCardRead(*human);
-	MedicalcardDisplay(*medicalcard);
+	medicalcard = MedicalCardRead(*human);
+	MedicalcardDisplay(medicalcard);
 	puts("\nРассчёт ИМТ: ");
-	BodyMassIndex(*medicalcard);
+	BodyMassIndex(medicalcard);
 	puts("\nИзменение статуса здоровья в медицинской карте: ");
-	SetHealthStatus(*medicalcard);
-	MedicalcardDisplay(*medicalcard);
+	SetHealthStatus(medicalcard);
+	MedicalcardDisplay(medicalcard);
 
 	puts("\nТест структуры Work: ");
-	Work* work;
+	Work* work; //Динамическая переменная типа работа
 	work = (Work*)malloc(sizeof(Work));
 	puts("Инициализация работы: ");
 	*work = WorkInit("Прокурор", 100);
@@ -65,7 +64,7 @@ int main() {
 	HumanDisplay(*human, *clothes);
 
 	puts("\nТест структуры Realty: ");
-	Realty* realty;
+	Realty* realty; //Динамическая переменная типа недвижимость
 	realty = (Realty*)malloc(sizeof(Realty));
 	puts("\nИнициализация недвижимости: \n");
 	*realty = RealtyInit("Сарай", "Ноги");
@@ -73,6 +72,7 @@ int main() {
 	puts("\nCоздание недвижимости: ");
 	*realty = RealtyRead();
 	RealtyDisplay(*realty);
+	human->Moneybalance = 1000000000;//чит для теста на деньги
 	puts("\nПокупка новой недвижимости: ");
 	BuyNew(*realty, *human);
 	RealtyDisplay(*realty);

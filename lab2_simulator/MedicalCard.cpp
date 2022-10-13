@@ -2,7 +2,7 @@
 #include "MedicalCard.h"
 #include <iostream>
 #include "Human.h"
-
+//Инициализация медкарты
 MedicalCard MedicalCardInit(Human human, int weight, int height, const char healthstatus[25])
 {
     MedicalCard medicalcard;
@@ -12,7 +12,7 @@ MedicalCard MedicalCardInit(Human human, int weight, int height, const char heal
     strcpy(medicalcard.HealthStatus, healthstatus);
     return medicalcard;
 }
-
+//Заполнение информации медицинской карты с клавиатуры
 MedicalCard MedicalCardRead(Human human)
 {
     MedicalCard medicalcard;
@@ -37,12 +37,12 @@ MedicalCard MedicalCardRead(Human human)
     strcpy(medicalcard.HealthStatus, strhealthstatus);
     return medicalcard;
 }
-
+//Вывод информации медицинской карты
 void MedicalcardDisplay(MedicalCard medicalcard)
 {
     printf("Имя персонажа: %s\nВозраст персонажа: %d\nПол персонажа: %s\nРост: %d см\nВес : %d кг\nСтатус здоровья персонажа: %s\n", medicalcard.human.Name, medicalcard.human.Age, medicalcard.human.Sex, medicalcard.Height, medicalcard.Weight, medicalcard.HealthStatus);
 }
-
+//Функция рассчёта индекса массы тела персонажа
 void BodyMassIndex(MedicalCard medicalcard) {
     double Index, Weight, Height;
     if (medicalcard.Height > 0 && medicalcard.Weight > 0) {
@@ -57,7 +57,7 @@ void BodyMassIndex(MedicalCard medicalcard) {
             printf("\nУ %s избыточный вес, ИМТ=%.2f", medicalcard.human.Name, Index);
     }
 }
-
+//Функция изменения статуса здоровья персонажа
 void SetHealthStatus(MedicalCard &medicalcard)
 {
     if (medicalcard.HealthStatus != NULL) {
