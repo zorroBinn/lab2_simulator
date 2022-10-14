@@ -15,5 +15,6 @@ public:
 	void HumanDisplay(); //Вывод информации о персонаже
 	void HumanNameSexAgeDisplay(); //Вывод имени, пола, возраста (для медкарты)
 	void ChangeMoney(long int money); //Метод изменения баланса
-	long int MoneyBalanceDisplay(); //Метод вывода баланса
+	long int MoneyBalanceDisplay(); //Метод вывода баланса (геттер)
+	char* HumanGetName(); //Метод вывода имени персонажа (геттер)
 };

@@ -49,13 +49,13 @@ int main() {
 	std::cout << "\nИнициализация динамического массива работ:\n";	
 	for (int i = 0; i < 3; i++) {
 		std::cout << "\nРабота номер " << i+1;
-		works[i].WorkInit("Работа", (i+1) * 10000);
+		works[i].WorkInit(*human, "Работа", (i+1) * 10000);
 		works[i].WorkDisplay();
 	}
 	std::cout << "\nВвод с клавиатуры динамического массива работ:\n";
 	for (int i = 0; i < 3; i++) {
 		std::cout << "\nРабота номер " << i+1;
-		works[i].WorkRead();
+		works[i].WorkRead(*human);
 		works[i].WorkDisplay();
 	}
 	std::cout << "\nТест методов:\n";
@@ -68,7 +68,7 @@ int main() {
 	Realty* realtyes[3]; //Массив динамических объектов
 	for (int i = 0; i < 3; i++) {
 		realtyes[i] = new Realty;
-		realtyes[i]->RealtyRead();
+		realtyes[i]->RealtyRead(*human);
 	}
 	std::cout << "\nТест методов:\n";
 	human->ChangeMoney(1000000000); //чит на деньги (для теста)

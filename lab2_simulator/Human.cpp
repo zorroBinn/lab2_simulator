@@ -50,11 +50,17 @@ void Human::HumanNameSexAgeDisplay()
 //Метод изменения баланса
 void Human::ChangeMoney(long int money) 
 {
-	long int Balance = (MoneyBalanceDisplay() + money);
+	long int Balance = (this->Moneybalance + money);
 	this->Moneybalance = Balance;
+	
 }
-//Метод вывода баланса
+//Метод вывода баланса (геттер)
 long int Human::MoneyBalanceDisplay()
 {
 	return this->Moneybalance;
+}
+//Метод вывода имени персонажа (геттер)
+char* Human::HumanGetName() 
+{
+	return this->Name;
 }
