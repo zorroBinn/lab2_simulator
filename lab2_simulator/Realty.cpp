@@ -1,40 +1,41 @@
 #include "Realty.h"
 #include <iostream>
 #include <conio.h>
+using namespace std;
 //Конструктор без параметров
 Realty::Realty()
 {
     this->human = Human();
-    strcpy_s(this->Housing, "");
-    strcpy_s(this->Vehicle, "");
+    this->Housing = "";
+    this->Vehicle = "";
 }
 //Конструктор с параметрами
-Realty::Realty(Human human, const char housing[30], const char vehicle[30])
+Realty::Realty(Human human, string housing, string vehicle)
 {
-	strcpy_s(this->Housing, housing);
-	strcpy_s(this->Vehicle, vehicle);
+	this->Housing = housing;
+	this->Vehicle = vehicle;
     this->human = human;
 }
 //Ввод информации об имуществе с клавиатуры
 void Realty::RealtyRead(Human human)
 {
-	char strhousing[30] = "Гараж", strvehicle[30] = "Велосипед";
-	std::cout << "\nНачальное жильё: " << strhousing << "\nНачальное ТО: " << strvehicle;
-	strcpy_s(this->Housing, strhousing);
-	strcpy_s(this->Vehicle, strvehicle);
+	string strhousing = "Гараж", strvehicle = "Велосипед";
+	cout << "\nНачальное жильё: " << strhousing << "\nНачальное ТО: " << strvehicle;
+	this->Housing = strhousing;
+	this->Vehicle = strvehicle;
     this->human = human;
 }
 //Вывод информации об имуществе
 void Realty::RealtyDisplay()
 {
-	std::cout << "\nИмущество персонажа " << human.HumanGetName() << ":\nЖильё: " << Housing << "\nТранспортное средство: " << Vehicle;
+	cout << "\nИмущество персонажа " << human.HumanGetName() << ":\nЖильё: " << Housing << "\nТранспортное средство: " << Vehicle;
 }
 //Метод покупки нового имущества
 void Realty::BuyNew(Human human)
 {
     int choice, flag;
-    char strbuynew[30];
-    std::cout << "\nВыберите для покупки:\n1 - Квартира(3 000 000р)\n2 - Коттедж(7 000 000р)\n3 - Вилла(20 000 000р)\n4 - Дворец(100 000 000р)\n5 - Мотоцикл(1 000 000)\n6 - Автомобиль(2 000 000)\n";
+    string strbuynew;
+    cout << "\nВыберите для покупки:\n1 - Квартира(3 000 000р)\n2 - Коттедж(7 000 000р)\n3 - Вилла(20 000 000р)\n4 - Дворец(100 000 000р)\n5 - Мотоцикл(1 000 000)\n6 - Автомобиль(2 000 000)\n";
     do {
         flag = 0;
         choice = _getch();
@@ -49,9 +50,9 @@ void Realty::BuyNew(Human human)
     switch (choice) {
     case '1': {
         if (human.MoneyBalanceDisplay() > 3000000) {
-            std::cout << "Вы купили квартиру за 3 000 000р!";
+            cout << "Вы купили квартиру за 3 000 000р!";
             this->human.ChangeMoney(-3000000);
-            strcpy_s(strbuynew, "Квартира");
+            strbuynew = "Квартира";
             this->Realty::Realty(human, strbuynew, Vehicle);
         }
         else flag = 1;
@@ -59,9 +60,9 @@ void Realty::BuyNew(Human human)
     }
     case '2': {
         if (human.MoneyBalanceDisplay() > 7000000) {
-            std::cout << "Вы купили коттедж за 7 000 000р!";
+            cout << "Вы купили коттедж за 7 000 000р!";
             this->human.ChangeMoney(-7000000);
-            strcpy_s(strbuynew, "Коттедж");
+            strbuynew = "Коттедж";
             this->Realty::Realty(human, strbuynew, Vehicle);
         }
         else flag = 1;
@@ -69,9 +70,9 @@ void Realty::BuyNew(Human human)
     }
     case '3': {
         if (human.MoneyBalanceDisplay() > 20000000) {
-            std::cout << "Вы купили виллу за 20 000 000р!";
+            cout << "Вы купили виллу за 20 000 000р!";
             this->human.ChangeMoney(-20000000);
-            strcpy_s(strbuynew, "Вилла");
+            strbuynew = "Вилла";
             this->Realty::Realty(human, strbuynew, Vehicle);
         }
         else flag = 1;
@@ -79,9 +80,9 @@ void Realty::BuyNew(Human human)
     }
     case '4': {
         if (human.MoneyBalanceDisplay() > 100000000) {
-            std::cout << "Вы купили Дворец за 100 000 000р!";
+            cout << "Вы купили Дворец за 100 000 000р!";
             this->human.ChangeMoney(-100000000);
-            strcpy_s(strbuynew, "Дворец");
+            strbuynew = "Дворец";
             this->Realty::Realty(human, strbuynew, Vehicle);
         }
         else flag = 1;
@@ -89,9 +90,9 @@ void Realty::BuyNew(Human human)
     }
     case '5': {
         if (human.MoneyBalanceDisplay() > 1000000) {
-            std::cout << "Вы купили мотоцикл за 1 000 000р!";
+            cout << "Вы купили мотоцикл за 1 000 000р!";
             this->human.ChangeMoney(-1000000);
-            strcpy_s(strbuynew, "Мотоцикл");
+            strbuynew = "Мотоцикл";
             this->Realty::Realty(human, Housing, strbuynew);
         }
         else flag = 1;
@@ -99,9 +100,9 @@ void Realty::BuyNew(Human human)
     }
     case '6': {
         if (human.MoneyBalanceDisplay() > 2000000) {
-            std::cout << "Вы купили автомобиль за 2 000 000р!";
+            cout << "Вы купили автомобиль за 2 000 000р!";
             this->human.ChangeMoney(-2000000);
-            strcpy_s(strbuynew, "Автомобиль");
+            strbuynew = "Автомобиль";
             this->Realty::Realty(human, Housing, strbuynew);
         }
         else flag = 1;
@@ -109,5 +110,5 @@ void Realty::BuyNew(Human human)
     }
     }
     if (flag)
-        std::cout << "\nНедостаточно денег для покупки\n";
+        cout << "\nНедостаточно денег для покупки\n";
 }

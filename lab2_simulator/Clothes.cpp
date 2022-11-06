@@ -1,43 +1,44 @@
 #include "Clothes.h"
 #include <iostream>
+using namespace std;
 //Конструктор без параметров
 Clothes::Clothes()
 {
 	this->ClothesStatus = 0;
-	strcpy_s(this->Body, "");
-	strcpy_s(this->Pants, "");
-	strcpy_s(this->Shoes, "");
+	this->Body = "";
+	this->Pants = "";
+	this->Shoes = "";
 }
 //Конструктор с параметрами
-Clothes::Clothes(int conditions, const char body[20], const char pants[20], const char shoes[20])
+Clothes::Clothes(int conditions, string body, string pants, string shoes)
 {
 	this->ClothesStatus = conditions;
-	strcpy_s(this->Body, body);
-	strcpy_s(this->Pants, pants);
-	strcpy_s(this->Shoes, shoes);
+	this->Body = body;
+	this->Pants = pants;
+	this->Shoes = shoes;
 }
 //Ввод информации об одежде с клавиатуры
 void Clothes::ClothesRead()
 {
 	int status;
-	char strbody[20], strpants[20], strshoes[20];
-	std::cout << "\nВведите информацию об одежде персонажа:\nВерхняя одежда: ";
-	std::cin >> strbody;
-	std::cout << "Штаны: ";
-	std::cin >> strpants;
-	std::cout << "Обувь: ";
-	std::cin >> strshoes;
-	std::cout << "Состояние одежды (в %): ";
-	std::cin >> status;
+	string strbody, strpants, strshoes;
+	cout << "\nВведите информацию об одежде персонажа:\nВерхняя одежда: ";
+	cin >> strbody;
+	cout << "Штаны: ";
+	cin >> strpants;
+	cout << "Обувь: ";
+	cin >> strshoes;
+	cout << "Состояние одежды (в %): ";
+	cin >> status;
 	this->ClothesStatus = status;
-	strcpy_s(this->Body, strbody);
-	strcpy_s(this->Pants, strpants);
-	strcpy_s(this->Shoes, strshoes);
+	this->Body = strbody;
+	this->Pants = strpants;
+	this->Shoes = strshoes;
 }
 //Вывод информации об одежде
 void Clothes::ClothesDisplay()
 {
-	std::cout << "\nВерхняя одежда: " << Body << "\nШтаны: " << Pants << "\nОбувь: " << Shoes << "\nСостояние одежды: " << ClothesStatus;
+	cout << "\nВерхняя одежда: " << Body << "\nШтаны: " << Pants << "\nОбувь: " << Shoes << "\nСостояние одежды: " << ClothesStatus;
 }
 //Метод "Порвать одежду"
 void Clothes::TearClothes()

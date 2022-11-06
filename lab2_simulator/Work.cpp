@@ -1,23 +1,24 @@
 #include "Work.h"
 #include <iostream>
+using namespace std;
 //Конструктор без параметров
 Work::Work()
 {
-	strcpy_s(this->NameWork, "");
+	this->NameWork = "";
 	this->Payment = 0;
 	this->human = Human();
 }
 //Конструктор с параметрами
-Work::Work(Human human, const char namework[30], int payment)
+Work::Work(Human human, string namework, int payment)
 {
-	strcpy_s(this->NameWork, namework);
+	this->NameWork = namework;
 	this->Payment = payment;
 	this->human = human;
 }
 //Инициализация работы
-void Work::WorkInit(Human human, const char namework[30], int payment)
+void Work::WorkInit(Human human, string namework, int payment)
 {
-	strcpy_s(this->NameWork, namework);
+	this->NameWork = namework;
 	this->Payment = payment;
 	this->human = human;
 }
@@ -25,23 +26,23 @@ void Work::WorkInit(Human human, const char namework[30], int payment)
 void Work::WorkRead(Human human)
 {
 	int payment;
-	char strnamework[30];
-	std::cout << "\nУкажите название работы: ";
-	std::cin >> strnamework;
-	std::cout << "\nУкажите оплату за работу: ";
-	std::cin >> payment;
-	strcpy_s(this->NameWork, strnamework);
+	string strnamework;
+	cout << "\nУкажите название работы: ";
+	cin >> strnamework;
+	cout << "\nУкажите оплату за работу: ";
+	cin >> payment;
+	this->NameWork = strnamework;
 	this->Payment = payment;
 	this->human = human;
 }
 //Вывод информации о работе
 void Work::WorkDisplay()
 {
-	std::cout << "\nРабота персонажа " << human.HumanGetName() << ":\nМесто работы: " << NameWork << "\nОплата за работу: " << Payment;
+	cout << "\nРабота персонажа " << human.HumanGetName() << ":\nМесто работы: " << NameWork << "\nОплата за работу: " << Payment;
 }
 //Метод "работать"
 void Work::Working(Human human)
 {
-	std::cout << "\nЗа свою работу вы получили " << Payment << "р!";
+	cout << "\nЗа свою работу вы получили " << Payment << "р!";
 	this->human.ChangeMoney(Payment);
 }
