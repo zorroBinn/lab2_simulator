@@ -1,6 +1,8 @@
 #pragma once
 #include "Clothes.h"
+#include <String>
 using namespace std;
+using std::string;
 //Объект персонаж (человек)
 class Human
 {

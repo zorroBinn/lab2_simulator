@@ -1,5 +1,6 @@
 #include "MedicalCard.h"
 #include <iostream>
+#include <String>
 using namespace std;
 //Конструктор без параметров
 MedicalCard::MedicalCard()
@@ -54,6 +55,20 @@ void MedicalCard::BodyMassIndex()
         else
             cout << "Избыточный вес, ИМТ = " << Index;
     }
+}
+void MedicalCard::BodyMassIndex(double* rez)
+{
+    double weight, height;
+    weight = Weight;
+    height = Height;
+    *rez = weight / (height * height / 10000);
+}
+void MedicalCard::BodyMassIndex(double& rez)
+{
+    double weight, height;
+    weight = Weight;
+    height = Height;
+    rez = weight / (height * height / 10000);
 }
 //Метод изменения статуса здоровья
 void MedicalCard::SetHealthStatus()

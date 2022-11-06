@@ -1,6 +1,7 @@
 #include "Realty.h"
 #include <iostream>
 #include <conio.h>
+#include <String>
 using namespace std;
 //Конструктор без параметров
 Realty::Realty()

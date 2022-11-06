@@ -1,6 +1,8 @@
 #include "Clothes.h"
 #include <iostream>
+#include <String>
 using namespace std;
+int Clothes::count = 0;
 //Конструктор без параметров
 Clothes::Clothes()
 {
@@ -8,6 +10,7 @@ Clothes::Clothes()
 	this->Body = "";
 	this->Pants = "";
 	this->Shoes = "";
+	count++;
 }
 //Конструктор с параметрами
 Clothes::Clothes(int conditions, string body, string pants, string shoes)
@@ -16,6 +19,8 @@ Clothes::Clothes(int conditions, string body, string pants, string shoes)
 	this->Body = body;
 	this->Pants = pants;
 	this->Shoes = shoes;
+	count++;
+	this->clothingsetcount = count;
 }
 //Ввод информации об одежде с клавиатуры
 void Clothes::ClothesRead()
@@ -34,11 +39,13 @@ void Clothes::ClothesRead()
 	this->Body = strbody;
 	this->Pants = strpants;
 	this->Shoes = strshoes;
+	count++;
+	this->clothingsetcount = count;
 }
 //Вывод информации об одежде
 void Clothes::ClothesDisplay()
 {
-	cout << "\nВерхняя одежда: " << Body << "\nШтаны: " << Pants << "\nОбувь: " << Shoes << "\nСостояние одежды: " << ClothesStatus;
+	cout << "Комплект одежды номер " << clothingsetcount << ":\nВерхняя одежда : " << Body << "\nШтаны : " << Pants << "\nОбувь : " << Shoes << "\nСостояние одежды : " << ClothesStatus;
 }
 //Метод "Порвать одежду"
 void Clothes::TearClothes()
@@ -59,4 +66,9 @@ void Clothes::SewUpClothes()
 		if (this->ClothesStatus > 100)
 			this->ClothesStatus = 100;
 	}
+}
+
+int Clothes::Getcount()
+{
+	return count;
 }

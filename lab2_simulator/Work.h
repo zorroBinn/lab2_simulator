@@ -1,6 +1,8 @@
 #pragma once
 #include "Human.h"
+#include <String>
 using namespace std;
+using std::string;
 //Объект работа
 class Work
 {

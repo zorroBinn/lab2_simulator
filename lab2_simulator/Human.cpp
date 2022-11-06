@@ -1,5 +1,6 @@
 #include "Human.h"
 #include <iostream>
+#include <String>
 using namespace std;
 //Конструктор без параметров
 Human::Human()

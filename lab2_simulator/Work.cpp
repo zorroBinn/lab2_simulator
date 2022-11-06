@@ -1,5 +1,6 @@
 #include "Work.h"
 #include <iostream>
+#include <String>
 using namespace std;
 //Конструктор без параметров
 Work::Work()

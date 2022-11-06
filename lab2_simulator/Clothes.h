@@ -1,11 +1,14 @@
 #pragma once
 #include "Clothes.h"
+#include <String>
 using namespace std;
+using std::string;
 //объект одежда
 class Clothes
 {
-	int ClothesStatus; //статус состояния одежды
+	int ClothesStatus, clothingsetcount; //статус состояния одежды
 	string Body, Pants, Shoes; //Верх, штаны, обувь
+	static int count;
 
 public:
 	Clothes(); //Конструктор без параметров
@@ -14,5 +17,6 @@ public:
 	void ClothesDisplay(); //Вывод информации об одежде
 	void TearClothes(); //Метод "Порвать одежду"
 	void SewUpClothes(); //Метод "Зашить одежду"
+	static int Getcount();
 };
 

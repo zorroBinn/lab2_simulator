@@ -1,6 +1,8 @@
 #pragma once
 #include "Human.h"
+#include <String>
 using namespace std;
+using std::string;
 //Объект медицинская карта персонажа
 class MedicalCard
 {
@@ -14,5 +16,7 @@ public:
 	void MedicalCardRead(Human human);//Ввод информации о медкарте с клавиатуры
 	void MedicalcardDisplay();//Вывод информации о медкарте
 	void BodyMassIndex();//Метод рассчёта индекса массы тела персонажа
+	void BodyMassIndex(double* rez);
+	void BodyMassIndex(double& rez);
 	void SetHealthStatus(); //Метод изменения статуса здоровья
 };
