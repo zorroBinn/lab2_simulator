@@ -19,4 +19,7 @@ public:
 	void BodyMassIndex(double* rez);
 	void BodyMassIndex(double& rez);
 	void SetHealthStatus(); //Метод изменения статуса здоровья
+	friend void CheatsHealthStatus(MedicalCard& medicalcard);
 };
+
+void CheatsHealthStatus(MedicalCard& medicalcard);

@@ -18,5 +18,9 @@ public:
 	void TearClothes(); //Метод "Порвать одежду"
 	void SewUpClothes(); //Метод "Зашить одежду"
 	static int Getcount();
+	Clothes operator+ (Clothes& other);
+	friend void CheatsSewUpClothes(Clothes& clothes);
+
 };
 
+void CheatsSewUpClothes(Clothes& clothes);

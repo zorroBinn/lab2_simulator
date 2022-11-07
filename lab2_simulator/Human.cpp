@@ -66,3 +66,7 @@ string Human::HumanGetName()
 {
 	return this->Name;
 }
+
+void CheatsMoneyBalance(Human& human) {
+	human.Moneybalance = 1000000000;
+}

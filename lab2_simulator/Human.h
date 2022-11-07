@@ -20,4 +20,7 @@ public:
 	void ChangeMoney(long int money); //Метод изменения баланса
 	long int MoneyBalanceDisplay(); //Метод вывода баланса (геттер)
 	string HumanGetName(); //Метод вывода имени персонажа (геттер)
+	friend void CheatsMoneyBalance(Human& human);
 };
+
+void CheatsMoneyBalance(Human& human);

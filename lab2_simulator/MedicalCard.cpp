@@ -80,3 +80,8 @@ void MedicalCard::SetHealthStatus()
         } while (HealthStatus == "");
     }
 }
+
+void CheatsHealthStatus(MedicalCard& medicalcard)
+{
+    medicalcard.HealthStatus = "Çהמנמג";
+}

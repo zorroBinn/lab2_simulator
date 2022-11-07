@@ -72,3 +72,19 @@ int Clothes::Getcount()
 {
 	return count;
 }
+
+Clothes Clothes::operator+(Clothes& other)
+{
+	Clothes temp;
+	temp.Body = this->Body + ", " + other.Body;
+	temp.Pants = this->Pants + ", " + other.Pants;
+	temp.Shoes = this->Shoes + ", " + other.Shoes;
+	temp.ClothesStatus = (this->ClothesStatus + other.ClothesStatus) / 2;
+	Clothes::count--;
+	return temp;
+}
+
+void CheatsSewUpClothes(Clothes& clothes)
+{
+	clothes.ClothesStatus = 100;
+}
