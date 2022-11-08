@@ -2,7 +2,9 @@
 #include <iostream>
 #include <String>
 using namespace std;
+
 int Clothes::count = 0;
+
 //Конструктор без параметров
 Clothes::Clothes()
 {
@@ -12,6 +14,7 @@ Clothes::Clothes()
 	this->Shoes = "";
 	count++;
 }
+
 //Конструктор с параметрами
 Clothes::Clothes(int conditions, string body, string pants, string shoes)
 {
@@ -22,6 +25,7 @@ Clothes::Clothes(int conditions, string body, string pants, string shoes)
 	count++;
 	this->clothingsetcount = count;
 }
+
 //Ввод информации об одежде с клавиатуры
 void Clothes::ClothesRead()
 {
@@ -42,11 +46,13 @@ void Clothes::ClothesRead()
 	count++;
 	this->clothingsetcount = count;
 }
+
 //Вывод информации об одежде
 void Clothes::ClothesDisplay()
 {
-	cout << "Комплект одежды номер " << clothingsetcount << ":\nВерхняя одежда : " << Body << "\nШтаны : " << Pants << "\nОбувь : " << Shoes << "\nСостояние одежды : " << ClothesStatus;
+	cout << "\nКомплект одежды номер " << clothingsetcount << ":\nВерхняя одежда : " << Body << "\nШтаны : " << Pants << "\nОбувь : " << Shoes << "\nСостояние одежды : " << ClothesStatus << endl;
 }
+
 //Метод "Порвать одежду"
 void Clothes::TearClothes()
 {
@@ -57,6 +63,7 @@ void Clothes::TearClothes()
 			this->ClothesStatus = 0;
 	}
 }
+
 //Метод "Зашить одежду"
 void Clothes::SewUpClothes()
 {
@@ -68,23 +75,15 @@ void Clothes::SewUpClothes()
 	}
 }
 
+//Статическая функция возврата количества сетов одежды
 int Clothes::Getcount()
 {
 	return count;
 }
 
-Clothes Clothes::operator+(Clothes& other)
-{
-	Clothes temp;
-	temp.Body = this->Body + ", " + other.Body;
-	temp.Pants = this->Pants + ", " + other.Pants;
-	temp.Shoes = this->Shoes + ", " + other.Shoes;
-	temp.ClothesStatus = (this->ClothesStatus + other.ClothesStatus) / 2;
-	Clothes::count--;
-	return temp;
-}
-
+//чит на починку одежды
 void CheatsSewUpClothes(Clothes& clothes)
 {
+	cout << "\nАктивирован чит, одежда полностью починена!" << endl;
 	clothes.ClothesStatus = 100;
 }

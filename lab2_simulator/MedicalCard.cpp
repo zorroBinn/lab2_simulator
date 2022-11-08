@@ -2,14 +2,21 @@
 #include <iostream>
 #include <String>
 using namespace std;
+
 //Конструктор без параметров
 MedicalCard::MedicalCard()
 {
     this->Weight = 0;
     this->Height = 0;
     this->HealthStatus = "";
-    this->human = Human();
 }
+
+//конструктор с одним параметром
+MedicalCard::MedicalCard(Human human)
+{
+    this->human = human;
+}
+
 //Конструктор с параметрами
 MedicalCard::MedicalCard(Human human, int weight, int height, string healthstatus)
 {
@@ -18,6 +25,7 @@ MedicalCard::MedicalCard(Human human, int weight, int height, string healthstatu
 	this->HealthStatus = healthstatus;
 	this->human = human;
 }
+
 //Ввод информации о медкарте с клавиатуры
 void MedicalCard::MedicalCardRead(Human human)
 {
@@ -34,12 +42,14 @@ void MedicalCard::MedicalCardRead(Human human)
     this->Weight = weight;
     this->Height = height;
 }
+
 //Вывод информации о медкарте
 void MedicalCard::MedicalcardDisplay()
 {
     human.HumanNameSexAgeDisplay();
-    cout << "\nРост: " << Height << "\nВес: " << Weight << "\nСтатус здоровья: " << HealthStatus;
+    cout << "\nРост: " << Height << "\nВес: " << Weight << "\nСтатус здоровья: " << HealthStatus << endl;;
 }
+
 //Метод рассчёта индекса массы тела персонажа
 void MedicalCard::BodyMassIndex()
 {
@@ -56,6 +66,8 @@ void MedicalCard::BodyMassIndex()
             cout << "Избыточный вес, ИМТ = " << Index;
     }
 }
+
+//Возврат значения через указатель
 void MedicalCard::BodyMassIndex(double* rez)
 {
     double weight, height;
@@ -63,6 +75,8 @@ void MedicalCard::BodyMassIndex(double* rez)
     height = Height;
     *rez = weight / (height * height / 10000);
 }
+
+//Возврат значения через ссылку
 void MedicalCard::BodyMassIndex(double& rez)
 {
     double weight, height;
@@ -70,6 +84,7 @@ void MedicalCard::BodyMassIndex(double& rez)
     height = Height;
     rez = weight / (height * height / 10000);
 }
+
 //Метод изменения статуса здоровья
 void MedicalCard::SetHealthStatus()
 {
@@ -81,7 +96,9 @@ void MedicalCard::SetHealthStatus()
     }
 }
 
+//Чит на здоровье
 void CheatsHealthStatus(MedicalCard& medicalcard)
 {
+    cout << "\nАктивирован чит, статус здоровья - Здоров!" << endl;
     medicalcard.HealthStatus = "Здоров";
 }

@@ -13,6 +13,7 @@ class Human
 
 public:
 	Human(); //Конструктор без параметров
+	Human(Clothes clothes);
 	Human(int age, string name, string sex, Clothes clothes);//Конструктор с параметрами
 	void HumanRead(); //Ввод информации о персонаже с клавиатуры
 	void HumanDisplay(); //Вывод информации о персонаже
@@ -20,7 +21,9 @@ public:
 	void ChangeMoney(long int money); //Метод изменения баланса
 	long int MoneyBalanceDisplay(); //Метод вывода баланса (геттер)
 	string HumanGetName(); //Метод вывода имени персонажа (геттер)
-	friend void CheatsMoneyBalance(Human& human);
+	friend void CheatsMoneyBalance(Human& human); //Дружественная функция - чит на деньги
+	Human& operator ++ (); //Перегрузка префиксного ++
+	Human operator ++ (int); //Перегрузка постфиксного ++
 };
 
-void CheatsMoneyBalance(Human& human);
+void CheatsMoneyBalance(Human& human); //Чит на деньги

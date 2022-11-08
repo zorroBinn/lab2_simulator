@@ -12,6 +12,7 @@ class MedicalCard
 
 public:
 	MedicalCard();//Конструктор без параметров
+	MedicalCard(Human human);//конструктор с одним параметром
 	MedicalCard(Human human, int weight, int height, string healthstatus);//Конструктор с параметрами
 	void MedicalCardRead(Human human);//Ввод информации о медкарте с клавиатуры
 	void MedicalcardDisplay();//Вывод информации о медкарте
@@ -19,7 +20,7 @@ public:
 	void BodyMassIndex(double* rez);
 	void BodyMassIndex(double& rez);
 	void SetHealthStatus(); //Метод изменения статуса здоровья
-	friend void CheatsHealthStatus(MedicalCard& medicalcard);
+	friend void CheatsHealthStatus(MedicalCard& medicalcard);//Дружественная функция - чит на здоровье
 };
 
-void CheatsHealthStatus(MedicalCard& medicalcard);
+void CheatsHealthStatus(MedicalCard& medicalcard); //Чит на здоровье

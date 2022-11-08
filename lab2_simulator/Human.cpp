@@ -2,6 +2,7 @@
 #include <iostream>
 #include <String>
 using namespace std;
+
 //Конструктор без параметров
 Human::Human()
 {
@@ -9,8 +10,14 @@ Human::Human()
 	this->Name = "";
 	this->Moneybalance = 0;
 	this->Sex = "";
-	this->clothes = Clothes();
 }
+
+//конструктор с одним параметром
+Human::Human(Clothes clothes)
+{
+	this->clothes = clothes;
+}
+
 //Конструктор с параметрами
 Human::Human(int age, string name, string sex, Clothes clothes)
 {
@@ -20,6 +27,7 @@ Human::Human(int age, string name, string sex, Clothes clothes)
 	this->Sex = sex;
 	this->clothes = clothes;
 }
+
 //Ввод информации о персонаже с клавиатуры
 void Human::HumanRead()
 {
@@ -38,17 +46,20 @@ void Human::HumanRead()
 	this->Moneybalance = 1000;
 	this->clothes = clothes;
 }
+
 //Вывод информации о персонаже
 void Human::HumanDisplay()
 {
 	cout << "\nИмя персонажа: " << Name << "\nПол персонажа: " << Sex << "\nВозраст персонажа: " << Age << "\nИгровой баланс денег: " << Moneybalance << "\nОдежда персонажа:\n";
 	clothes.ClothesDisplay();
 }
+
 //Вывод имени, пола, возраста (для медкарты)
 void Human::HumanNameSexAgeDisplay()
 {
-	cout << "\nИмя персонажа: " << Name << "\nПол персонажа: " << Sex << "\nВозраст персонажа: " << Age;
+	cout << "\nИмя персонажа: " << Name << "\nПол персонажа: " << Sex << "\nВозраст персонажа: " << Age << endl;
 }
+
 //Метод изменения баланса
 void Human::ChangeMoney(long int money) 
 {
@@ -56,17 +67,36 @@ void Human::ChangeMoney(long int money)
 	this->Moneybalance = Balance;
 	
 }
+
 //Метод вывода баланса (геттер)
 long int Human::MoneyBalanceDisplay()
 {
 	return this->Moneybalance;
 }
+
 //Метод вывода имени персонажа (геттер)
 string Human::HumanGetName() 
 {
 	return this->Name;
 }
 
+//Перегрузка оператора ++ префиксного 
+Human& Human::operator++()
+{
+	this->Age++;
+	return *this;
+}
+
+//Перегрузка оператора ++ постфиксного 
+Human Human::operator++(int)
+{
+	Human temp(*this);
+	this->Age++;
+	return temp;
+}
+
+//Чит на деньги
 void CheatsMoneyBalance(Human& human) {
+	cout << "\nАктивирован чит, баланс пополнен!" << endl;
 	human.Moneybalance = 1000000000;
 }

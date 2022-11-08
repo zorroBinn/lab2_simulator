@@ -2,13 +2,20 @@
 #include <iostream>
 #include <String>
 using namespace std;
+
 //Конструктор без параметров
 Work::Work()
 {
 	this->NameWork = "";
 	this->Payment = 0;
-	this->human = Human();
 }
+
+//конструктор с одним параметром
+Work::Work(Human human)
+{
+	this->human = human;
+}
+
 //Конструктор с параметрами
 Work::Work(Human human, string namework, int payment)
 {
@@ -16,6 +23,7 @@ Work::Work(Human human, string namework, int payment)
 	this->Payment = payment;
 	this->human = human;
 }
+
 //Инициализация работы
 void Work::WorkInit(Human human, string namework, int payment)
 {
@@ -23,6 +31,7 @@ void Work::WorkInit(Human human, string namework, int payment)
 	this->Payment = payment;
 	this->human = human;
 }
+
 //Ввод информации о работе с клавиатуры
 void Work::WorkRead(Human human)
 {
@@ -36,14 +45,28 @@ void Work::WorkRead(Human human)
 	this->Payment = payment;
 	this->human = human;
 }
+
 //Вывод информации о работе
 void Work::WorkDisplay()
 {
-	cout << "\nРабота персонажа " << human.HumanGetName() << ":\nМесто работы: " << NameWork << "\nОплата за работу: " << Payment;
+	cout << "\nРабота персонажа " << human.HumanGetName() << ":\nМесто работы: " << NameWork << "\nОплата за работу: " << Payment << endl;
 }
+
 //Метод "работать"
 void Work::Working(Human human)
 {
 	cout << "\nЗа свою работу вы получили " << Payment << "р!";
 	this->human.ChangeMoney(Payment);
+}
+
+//перегрузка оператора + (сложение 2х работ)
+Work Work::operator+(Work& other)
+{
+	if (this->human.HumanGetName() == other.human.HumanGetName()) {
+		Work temp;
+		temp.human = this->human;
+		temp.NameWork = this->NameWork + ", " + other.NameWork;
+		temp.Payment = this->Payment + other.Payment;
+		return temp;
+	}
 }

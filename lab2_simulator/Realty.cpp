@@ -3,13 +3,20 @@
 #include <conio.h>
 #include <String>
 using namespace std;
+
 //Конструктор без параметров
 Realty::Realty()
 {
-    this->human = Human();
     this->Housing = "";
     this->Vehicle = "";
 }
+
+//конструктор с одним параметром
+Realty::Realty(Human human)
+{
+    this->human = human;
+}
+
 //Конструктор с параметрами
 Realty::Realty(Human human, string housing, string vehicle)
 {
@@ -17,6 +24,7 @@ Realty::Realty(Human human, string housing, string vehicle)
 	this->Vehicle = vehicle;
     this->human = human;
 }
+
 //Ввод информации об имуществе с клавиатуры
 void Realty::RealtyRead(Human human)
 {
@@ -26,11 +34,13 @@ void Realty::RealtyRead(Human human)
 	this->Vehicle = strvehicle;
     this->human = human;
 }
+
 //Вывод информации об имуществе
 void Realty::RealtyDisplay()
 {
-	cout << "\nИмущество персонажа " << human.HumanGetName() << ":\nЖильё: " << Housing << "\nТранспортное средство: " << Vehicle;
+    cout << "\nИмущество персонажа " << human.HumanGetName() << ":\nЖильё: " << Housing << "\nТранспортное средство: " << Vehicle << endl;
 }
+
 //Метод покупки нового имущества
 void Realty::BuyNew(Human human)
 {
