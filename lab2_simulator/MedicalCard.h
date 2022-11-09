@@ -17,8 +17,8 @@ public:
 	void MedicalCardRead(Human human);//Ввод информации о медкарте с клавиатуры
 	void MedicalcardDisplay();//Вывод информации о медкарте
 	void BodyMassIndex();//Метод рассчёта индекса массы тела персонажа
-	void BodyMassIndex(double* rez);
-	void BodyMassIndex(double& rez);
+	void BodyMassIndex(double* rez);//Возврат значения через указатель
+	void BodyMassIndex(double& rez);//Возврат значения через ссылку
 	void SetHealthStatus(); //Метод изменения статуса здоровья
 	friend void CheatsHealthStatus(MedicalCard& medicalcard);//Дружественная функция - чит на здоровье
 };

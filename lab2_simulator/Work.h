@@ -18,5 +18,5 @@ public:
 	void WorkRead(Human human);//Ввод информации о работе с клавиатуры
 	void WorkDisplay();//Вывод информации о работе
 	void Working(Human human);//Метод "работать"
-	Work operator+(const Work& other); //перегрузка оператора + (сложение 2х работ)
+	Work operator+(const Work& other); //перегрузка оператора +
 };

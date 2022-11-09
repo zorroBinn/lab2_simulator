@@ -59,7 +59,7 @@ void Work::Working(Human human)
 	this->human.ChangeMoney(Payment);
 }
 
-//перегрузка оператора + (сложение 2х работ)
+//перегрузка оператора +
 Work Work::operator+(const Work& other)
 {
 	Work temp = Work(this->human, this->NameWork + ", " + other.NameWork, this->Payment + other.Payment);
