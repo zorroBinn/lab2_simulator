@@ -60,13 +60,8 @@ void Work::Working(Human human)
 }
 
 //перегрузка оператора + (сложение 2х работ)
-Work Work::operator+(Work& other)
+Work Work::operator+(const Work& other)
 {
-	if (this->human.HumanGetName() == other.human.HumanGetName()) {
-		Work temp;
-		temp.human = this->human;
-		temp.NameWork = this->NameWork + ", " + other.NameWork;
-		temp.Payment = this->Payment + other.Payment;
-		return temp;
-	}
+	Work temp = Work(this->human, this->NameWork + ", " + other.NameWork, this->Payment + other.Payment);
+	return temp;
 }

@@ -28,13 +28,13 @@ int main() {
 	human1->HumanDisplay();
 	Human* human2 = new Human();
 	cout << "Префиксный инкремент" << endl;
-	human2 = ++human1;
+	/*human2 = ++human1;
 	human1->HumanNameSexAgeDisplay();
 	human2->HumanNameSexAgeDisplay();
-	cout << "Постфиксный инкремент" << endl;
+	cout << "Постфиксный инкремент" << endl; 
 	human2 = human1++;
 	human2->HumanNameSexAgeDisplay();
-	human1->HumanNameSexAgeDisplay();
+	human1->HumanNameSexAgeDisplay();*/
 	//Тест дружественной функции
 	CheatsMoneyBalance(*human1);
 
@@ -42,12 +42,20 @@ int main() {
 	double rez;
 	medicalcard->MedicalcardDisplay();
 	medicalcard->BodyMassIndex();
-	medicalcard->BodyMassIndex(rez);
+	medicalcard->BodyMassIndex(rez);//Передача значения из функции через указатель
 	cout << "Возврат через указатель значения ИМТ: " << rez << endl;
-	medicalcard->BodyMassIndex(&rez);
+	medicalcard->BodyMassIndex(&rez);//Передача значения из функции через ссылку
 	cout << "Возврат через ссылку значения ИМТ: " << rez << endl;
 	//Тест дружественной функции
 	CheatsHealthStatus(*medicalcard);
+
+	Work* work1 = new Work(*human1, "Работа1", 10000);
+	work1->WorkDisplay();
+	Work* work2 = new Work(*human1, "Работа2", 5000);
+	work2->WorkDisplay();
+	Work* work = new Work();
+	//work = work1 + work2;	
+	work->WorkDisplay();
 
 	
 	cin.get(); 
