@@ -1,6 +1,7 @@
 #include "MedicalCard.h"
 #include <iostream>
 #include <String>
+#include <regex>
 using namespace std;
 
 //Конструктор без параметров
@@ -29,14 +30,41 @@ MedicalCard::MedicalCard(Human human, int weight, int height, string healthstatu
 //Ввод информации о медкарте с клавиатуры
 void MedicalCard::MedicalCardRead(Human human)
 {
+    bool correctinput = 0;
     int weight, height;
-    string strstatus;
-    cout << "\nвведите рост персонажа в см: ";
-    cin >> height;
-    cout << "\nвведите вес персонажа в кг: ";
-    cin >> weight;
-    cout << "\nУкажите статус здоровья персонажа: ";
-    cin >> strstatus;
+    string strstatus, strweight, strheight;
+    while (!correctinput) {
+        try
+        {
+            cout << "\nвведите рост персонажа в см: ";
+            cin >> strheight;
+            cout << "\nвведите вес персонажа в кг: ";
+            cin >> strweight;
+            weight = stoi(strweight);
+            height = stoi(strheight);
+            correctinput = 1;
+        }
+        catch (invalid_argument & ex)
+        {
+            cout << "Некорректный ввод веса и/или роста персонажа" << endl;
+        }
+    }
+    while (correctinput) {
+        try
+        {
+            cout << "\nУкажите статус здоровья персонажа: ";
+            cin >> strstatus;
+            strstatus = regex_replace(strstatus, regex("^ +| +$|( ) +"), "$1");
+            if (strstatus == "") {
+                throw "Ошибка ввода состояния здоровья";
+            }
+            correctinput = 0;
+        }
+        catch (const string ex)
+        {
+            cout << ex << endl;
+        }
+    }
     this->human = human;
     this->HealthStatus = strstatus;
     this->Weight = weight;
@@ -88,11 +116,23 @@ void MedicalCard::BodyMassIndex(double& rez)
 //Метод изменения статуса здоровья
 void MedicalCard::SetHealthStatus()
 {
-    if (HealthStatus != "") {
-        cout << "\nТекущий статус здоровья: " << HealthStatus << "\nВведите новый статус здоровья: ";
-        do {
-            cin >> HealthStatus;
-        } while (HealthStatus == "");
+    bool correctinput = 0;
+    string strstatus;
+    cout << "\nТекущий статус здоровья: " << HealthStatus << "\nВведите новый статус здоровья: ";
+    while (!correctinput) {
+        try
+        {
+            cin >> strstatus;
+            strstatus = regex_replace(strstatus, regex("^ +| +$|( ) +"), "$1");
+            if (strstatus == "") {
+                throw "Ошибка ввода состояния здоровья";
+            }
+            correctinput = 1;
+        }
+        catch (const string ex)
+        {
+            cout << ex << endl;
+        }
     }
 }
 

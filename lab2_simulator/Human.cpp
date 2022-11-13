@@ -1,6 +1,7 @@
 #include "Human.h"
 #include <iostream>
 #include <String>
+#include <regex>
 using namespace std;
 
 //Конструктор без параметров
@@ -31,14 +32,41 @@ Human::Human(int age, string name, string sex, Clothes clothes)
 //Ввод информации о персонаже с клавиатуры
 void Human::HumanRead()
 {
-	string strname, strsex;
+	string strname, strsex, strage;
 	int age;
-	cout << "\nВведите информацию о персонажe:\nИмя: ";
-	cin >> strname;
-	cout << "Пол: ";
-	cin >> strsex;
-	cout << "Возраст: ";
-	cin >> age;
+	bool correctinput = 0;
+	while (!correctinput) {
+		try
+		{
+			cout << "\nВведите информацию о персонажe:\nИмя: ";
+			cin >> strname;
+			strname = regex_replace(strname, regex("^ +| +$|( ) +"), "$1");
+			cout << "Пол: ";
+			cin >> strsex;
+			strsex = regex_replace(strsex, regex("^ +| +$|( ) +"), "$1");
+			if (strname == "" || strsex == "") {
+				throw "Ошибка ввода наименований одежды";
+			}
+			correctinput = 1;
+		}
+		catch (const string ex)
+		{
+			cout << ex << endl;
+		}
+	}
+	while (correctinput) {
+		try
+		{
+			cout << "Возраст: ";
+			cin >> strage;
+			age = stoi(strage);
+			correctinput = 0;
+		}
+		catch (invalid_argument & ex)
+		{
+			cout << "Некорректный ввод возраста" << endl;
+		}
+	}
 	this->Age = age;
 	this->Name = strname;
 	this->Sex = strsex;

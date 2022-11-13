@@ -65,6 +65,7 @@ void Realty::BuyNew(Human human)
             this->human.ChangeMoney(-3000000);
             strbuynew = "Квартира";
             this->Realty::Realty(human, strbuynew, Vehicle);
+            human = this->human;
         }
         else flag = 1;
         break;
@@ -75,6 +76,7 @@ void Realty::BuyNew(Human human)
             this->human.ChangeMoney(-7000000);
             strbuynew = "Коттедж";
             this->Realty::Realty(human, strbuynew, Vehicle);
+            human = this->human;
         }
         else flag = 1;
         break;
@@ -85,6 +87,7 @@ void Realty::BuyNew(Human human)
             this->human.ChangeMoney(-20000000);
             strbuynew = "Вилла";
             this->Realty::Realty(human, strbuynew, Vehicle);
+            human = this->human;
         }
         else flag = 1;
         break;
@@ -95,6 +98,7 @@ void Realty::BuyNew(Human human)
             this->human.ChangeMoney(-100000000);
             strbuynew = "Дворец";
             this->Realty::Realty(human, strbuynew, Vehicle);
+            human = this->human;
         }
         else flag = 1;
         break;
@@ -105,6 +109,7 @@ void Realty::BuyNew(Human human)
             this->human.ChangeMoney(-1000000);
             strbuynew = "Мотоцикл";
             this->Realty::Realty(human, Housing, strbuynew);
+            human = this->human;
         }
         else flag = 1;
         break;
@@ -115,6 +120,7 @@ void Realty::BuyNew(Human human)
             this->human.ChangeMoney(-2000000);
             strbuynew = "Автомобиль";
             this->Realty::Realty(human, Housing, strbuynew);
+            human = this->human;
         }
         else flag = 1;
         break;

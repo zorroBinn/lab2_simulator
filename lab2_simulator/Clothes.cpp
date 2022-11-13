@@ -1,6 +1,7 @@
 #include "Clothes.h"
 #include <iostream>
-#include <String>
+#include <string>
+#include <regex>
 using namespace std;
 
 int Clothes::count = 0;
@@ -29,16 +30,44 @@ Clothes::Clothes(int conditions, string body, string pants, string shoes)
 //Ввод информации об одежде с клавиатуры
 void Clothes::ClothesRead()
 {
+	bool correctinput = 0;
 	int status;
-	string strbody, strpants, strshoes;
-	cout << "\nВведите информацию об одежде персонажа:\nВерхняя одежда: ";
-	cin >> strbody;
-	cout << "Штаны: ";
-	cin >> strpants;
-	cout << "Обувь: ";
-	cin >> strshoes;
-	cout << "Состояние одежды (в %): ";
-	cin >> status;
+	string strbody, strpants, strshoes, strstatus;
+	while (!correctinput) {
+		try
+		{
+			cout << "\nВведите информацию об одежде персонажа:\nВерхняя одежда: ";
+			cin >> strbody;
+			strbody = regex_replace(strbody, regex("^ +| +$|( ) +"), "$1");
+			cout << "Штаны: ";
+			cin >> strpants;
+			strpants = regex_replace(strpants, regex("^ +| +$|( ) +"), "$1");
+			cout << "Обувь: ";
+			cin >> strshoes;
+			strshoes = regex_replace(strshoes, regex("^ +| +$|( ) +"), "$1");
+			if (strbody == "" || strpants == "" || strshoes == "") {
+				throw "Ошибка ввода наименований одежды";
+			}
+			correctinput = 1;
+		}
+		catch (const string ex)
+		{
+			cout << ex << endl;
+		}
+	}
+	while (correctinput) {
+		try
+		{
+			cout << "Состояние одежды (в %): ";
+			cin >> strstatus;
+			status = stoi(strstatus);
+			correctinput = 0;
+		}
+		catch (invalid_argument & ex)
+		{
+			cout << "Некорректный ввод процента целостности одежды" << endl;
+		}
+	}
 	this->ClothesStatus = status;
 	this->Body = strbody;
 	this->Pants = strpants;
