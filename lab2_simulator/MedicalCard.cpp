@@ -1,7 +1,7 @@
 #include "MedicalCard.h"
 #include <iostream>
 #include <String>
-#include <regex>
+
 using namespace std;
 
 //Конструктор без параметров
@@ -42,27 +42,38 @@ void MedicalCard::MedicalCardRead(Human human)
             cin >> strweight;
             weight = stoi(strweight);
             height = stoi(strheight);
+            if (weight < 2 || weight >550) {
+                throw "Некорректный ввод веса";
+            }
+            if (height < 30 || height > 300) {
+                throw height;
+            }
             correctinput = 1;
         }
         catch (invalid_argument & ex)
         {
             cout << "Некорректный ввод веса и/или роста персонажа" << endl;
         }
+        catch (const string ex) 
+        {
+            cout << ex << endl;
+        }
+        catch (const int ex)
+        {
+            cout << "Вес не может быть равен " << ex << endl;
+        }
+        cin.ignore(1024, '\n');
     }
     while (correctinput) {
         try
         {
             cout << "\nУкажите статус здоровья персонажа: ";
-            cin >> strstatus;
-            strstatus = regex_replace(strstatus, regex("^ +| +$|( ) +"), "$1");
-            if (strstatus == "") {
-                throw "Ошибка ввода состояния здоровья";
-            }
+            getline(cin, strstatus);
             correctinput = 0;
         }
-        catch (const string ex)
+        catch (const exception&)
         {
-            cout << ex << endl;
+            cout << "Некорректный ввод состояния здоровья" << endl;
         }
     }
     this->human = human;
@@ -122,16 +133,12 @@ void MedicalCard::SetHealthStatus()
     while (!correctinput) {
         try
         {
-            cin >> strstatus;
-            strstatus = regex_replace(strstatus, regex("^ +| +$|( ) +"), "$1");
-            if (strstatus == "") {
-                throw "Ошибка ввода состояния здоровья";
-            }
+            getline(cin, strstatus);
             correctinput = 1;
         }
-        catch (const string ex)
+        catch (const exception&)
         {
-            cout << ex << endl;
+            cout << "Некорректный ввод состояния здоровья" << endl;
         }
     }
 }

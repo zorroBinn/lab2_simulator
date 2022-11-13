@@ -1,7 +1,7 @@
 #include "Work.h"
 #include <iostream>
 #include <String>
-#include <regex>
+
 using namespace std;
 
 //Конструктор без параметров
@@ -35,16 +35,12 @@ void Work::WorkRead(Human human)
 		try
 		{
 			cout << "\nУкажите название работы: ";
-			cin >> strnamework;
-			strnamework = regex_replace(strnamework, regex("^ +| +$|( ) +"), "$1");
-			if (strnamework == "") {
-				throw "Ошибка ввода названия работы";
-			}
+			getline(cin, strnamework);
 			correctinput = 1;
 		}
-		catch (const string ex)
+		catch (const exception&)
 		{
-			cout << ex << endl;
+			cout << "Ошибка ввода названия работы" << endl;
 		}
 	}
 	while (correctinput) {
@@ -53,12 +49,20 @@ void Work::WorkRead(Human human)
 			cout << "\nУкажите оплату за работу: ";
 			cin >> strpayment;
 			payment = stoi(strpayment);
+			if (payment < 0) {
+				throw "Оплата не может быть меньше 0!";
+			}
 			correctinput = 0;
 		}
 		catch (invalid_argument &ex)
 		{
-			cout << "некорректный ввод оплаты" << endl;
+			cout << "Некорректный ввод оплаты" << endl;
 		}
+		catch (const string ex)
+		{
+			cout << ex << endl;
+		}
+		cin.ignore(1024, '\n');
 	}
 	this->NameWork = strnamework;
 	this->Payment = payment;
@@ -72,11 +76,11 @@ void Work::WorkDisplay()
 }
 
 //Метод "работать"
-void Work::Working(Human human)
+void Work::Working(Human &human)
 {
 	cout << "\nЗа свою работу вы получили " << Payment << "р!";
-	this->human.ChangeMoney(Payment);
-	human = this->human;
+	human.ChangeMoney(Payment);
+	this->human = human;
 }
 
 //перегрузка оператора +

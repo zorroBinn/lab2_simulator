@@ -1,7 +1,7 @@
 #include "Human.h"
 #include <iostream>
 #include <String>
-#include <regex>
+
 using namespace std;
 
 //Конструктор без параметров
@@ -39,19 +39,14 @@ void Human::HumanRead()
 		try
 		{
 			cout << "\nВведите информацию о персонажe:\nИмя: ";
-			cin >> strname;
-			strname = regex_replace(strname, regex("^ +| +$|( ) +"), "$1");
+			getline(cin, strname);
 			cout << "Пол: ";
-			cin >> strsex;
-			strsex = regex_replace(strsex, regex("^ +| +$|( ) +"), "$1");
-			if (strname == "" || strsex == "") {
-				throw "Ошибка ввода наименований одежды";
-			}
+			getline(cin, strsex);
 			correctinput = 1;
 		}
-		catch (const string ex)
+		catch (const exception&)
 		{
-			cout << ex << endl;
+			cout << "Некорректный ввод имени и/или пола" << endl;
 		}
 	}
 	while (correctinput) {
@@ -60,12 +55,20 @@ void Human::HumanRead()
 			cout << "Возраст: ";
 			cin >> strage;
 			age = stoi(strage);
+			if (age < 0 || age > 110) {
+				throw age;
+			}
 			correctinput = 0;
 		}
 		catch (invalid_argument & ex)
 		{
 			cout << "Некорректный ввод возраста" << endl;
 		}
+		catch (int ex)
+		{
+			cout << "Возраст персонажа не может равняться " << age << endl;
+		}
+		cin.ignore(1024, '\n');
 	}
 	this->Age = age;
 	this->Name = strname;
@@ -93,7 +96,6 @@ void Human::ChangeMoney(long int money)
 {
 	long int Balance = (this->Moneybalance + money);
 	this->Moneybalance = Balance;
-	
 }
 
 //Метод вывода баланса (геттер)

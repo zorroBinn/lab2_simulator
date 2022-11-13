@@ -11,60 +11,49 @@ int main() {
 	SetConsoleCP(1251);
 	SetConsoleOutputCP(1251);
 
-	//Тест статической переменной и статической функции
-	Clothes* clothes1 = new Clothes(100, "Кофта", "Трико", "Кеды");
-	Clothes* clothes2 = new Clothes(80, "Майка", "Шорты", "Тапки");
-	Clothes* clothes3 = new Clothes(20, "куртка", "Джинсы", "Ботинки");
-	cout << "Всего сетов одежды: " << Clothes::Getcount() << endl;
-	clothes1->ClothesDisplay();
-	clothes2->ClothesDisplay();
-	clothes3->ClothesDisplay();
-	//Тест дружественной функции
-	CheatsSewUpClothes(*clothes3);
-	clothes3->ClothesDisplay();
+	//Одномерный массив
+	Clothes clothes[2];
+	cout << "ввод массива сетов одежды" << endl;
+	for (int i = 0; i < 2; i++) {
+		clothes[i].ClothesRead();
+	}
+	cout << "вывод массива сетов одежлы" << endl;
+	for (int i = 0; i < 2; i++) {
+		clothes[i].ClothesDisplay();
+	}
 
-	//Тест перегрузки префиксного и постфиксного ++
-	Human human1(19, "Иван", "М", *clothes1);
-	cout << "\nПервый персонаж: " << endl;
-	human1.HumanDisplay();
-	Human human2;
-	cout << "Префиксный инкремент" << endl;
-	human2 = ++human1;
-	cout << "Первый персонаж: " << endl;
-	human1.HumanNameSexAgeDisplay();
-	cout << "Второй персонаж: " << endl;
-	human2.HumanNameSexAgeDisplay();
-	cout << "Постфиксный инкремент" << endl; 
-	human2 = human1++;
-	cout << "Первый персонаж: " << endl;
-	human1.HumanNameSexAgeDisplay();
-	cout << "Второй персонаж: " << endl;
-	human2.HumanNameSexAgeDisplay();
-	//Тест дружественной функции
-	CheatsMoneyBalance(human1);
+	Human human;
+	human.HumanRead();
+	human.HumanDisplay();
+	//Двумерный массив
+	Work** work = new Work * [2];
+	for (int i = 0; i < 2; i++) {
+		work[i] = new Work[2];
+	}
+	cout << "Ввод двумерного массива работ" << endl;
+	for (int i = 0; i < 2; i++) {
+		for (int j = 0; j < 2; j++) {
+			work[i][j].WorkRead(human);
+		}
+	}
+	cout << "Вывод двумерного массива работ" << endl;
+	for (int i = 0; i < 2; i++) {
+		for (int j = 0; j < 2; j++) {
+			work[i][j].WorkDisplay();
+		}
+	}
+	cout << "Работать на всех работах:" << endl;
+	for (int i = 0; i < 2; i++) {
+		for (int j = 0; j < 2; j++) {
+			work[i][j].Working(human);
+		}
+	}
+	cout << "\nИтоговый баланс: " << human.MoneyBalanceDisplay() << endl;
+	for (int i = 0; i < 2; i++)
+		delete[] work[i];
+	delete[] work;
+	//delete[] clothes;
 
-	//Тест вывода через ссылку/указатель
-	MedicalCard* medicalcard = new MedicalCard(human1, 78, 182, "Насморк");
-	double rez;
-	medicalcard->MedicalcardDisplay();
-	medicalcard->BodyMassIndex();
-	medicalcard->BodyMassIndex(rez);//Передача значения из функции через указатель
-	cout << "\nВозврат через указатель значения ИМТ: " << rez << endl;
-	medicalcard->BodyMassIndex(&rez);//Передача значения из функции через ссылку
-	cout << "Возврат через ссылку значения ИМТ: " << rez << endl;
-	//Тест дружественной функции
-	CheatsHealthStatus(*medicalcard);
-
-	//Тест перегрузки +
-	Work work1(human1, "Работа1", 10000);
-	work1.WorkDisplay();
-	Work work2(human1, "Работа2", 5000);
-	work2.WorkDisplay();
-	Work work;
-	work = work1 + work2;	
-	work.WorkDisplay();
-
-	
 	cin.get(); 
 	cin.get();
 }

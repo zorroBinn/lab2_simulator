@@ -1,7 +1,7 @@
 #include "Clothes.h"
 #include <iostream>
 #include <string>
-#include <regex>
+
 using namespace std;
 
 int Clothes::count = 0;
@@ -13,7 +13,6 @@ Clothes::Clothes()
 	this->Body = "";
 	this->Pants = "";
 	this->Shoes = "";
-	count++;
 }
 
 //Конструктор с параметрами
@@ -37,22 +36,16 @@ void Clothes::ClothesRead()
 		try
 		{
 			cout << "\nВведите информацию об одежде персонажа:\nВерхняя одежда: ";
-			cin >> strbody;
-			strbody = regex_replace(strbody, regex("^ +| +$|( ) +"), "$1");
+			getline(cin, strbody);
 			cout << "Штаны: ";
-			cin >> strpants;
-			strpants = regex_replace(strpants, regex("^ +| +$|( ) +"), "$1");
+			getline(cin, strpants);
 			cout << "Обувь: ";
-			cin >> strshoes;
-			strshoes = regex_replace(strshoes, regex("^ +| +$|( ) +"), "$1");
-			if (strbody == "" || strpants == "" || strshoes == "") {
-				throw "Ошибка ввода наименований одежды";
-			}
+			getline(cin, strshoes);
 			correctinput = 1;
 		}
-		catch (const string ex)
+		catch (const exception&)
 		{
-			cout << ex << endl;
+			cout << "Некорректный ввод данных" << endl;
 		}
 	}
 	while (correctinput) {
@@ -61,12 +54,20 @@ void Clothes::ClothesRead()
 			cout << "Состояние одежды (в %): ";
 			cin >> strstatus;
 			status = stoi(strstatus);
+			if (status < 0 || status > 100) {
+				throw status;
+			}
 			correctinput = 0;
 		}
 		catch (invalid_argument & ex)
 		{
 			cout << "Некорректный ввод процента целостности одежды" << endl;
 		}
+		catch (int ex)
+		{
+			cout << "Статус целостности одежды не может быть равен " << ex << endl;
+		}
+		cin.ignore(1024, '\n');
 	}
 	this->ClothesStatus = status;
 	this->Body = strbody;

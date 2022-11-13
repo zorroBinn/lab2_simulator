@@ -16,6 +16,6 @@ public:
 	Work(Human human, string namework, int payment);//Конструктор с параметрами
 	void WorkRead(Human human);//Ввод информации о работе с клавиатуры
 	void WorkDisplay();//Вывод информации о работе
-	void Working(Human human);//Метод "работать"
+	void Working(Human &human);//Метод "работать"
 	Work operator+(const Work& other); //перегрузка оператора +
 };
