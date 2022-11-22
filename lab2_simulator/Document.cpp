@@ -7,7 +7,7 @@ Document::Document() //конструктор без параметров
 	this->nomber = 10000 + (rand()*rand()/rand()*17) % 10000; //ѕрисвоение документу рандомного номера
 }
 
-Document::Document(int nomber) // онстркуток с параметром
+Document::Document(int nomber) // онструктор с параметром
 {
 	this->nomber = nomber;
 }

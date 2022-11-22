@@ -19,7 +19,7 @@ MedicalCard::MedicalCard(Human human)
 }
 
 //Конструктор с параметрами
-MedicalCard::MedicalCard(Human human, int weight, int height, string healthstatus)
+MedicalCard::MedicalCard(Human human, int weight, int height, string healthstatus, int nomber) : Document(nomber)
 {
 	this->Weight = weight;
 	this->Height = height;

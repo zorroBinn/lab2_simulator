@@ -15,7 +15,7 @@ protected:
 public:
 	MedicalCard();//Конструктор без параметров
 	MedicalCard(Human human);//конструктор с одним параметром
-	MedicalCard(Human human, int weight, int height, string healthstatus);//Конструктор с параметрами
+	MedicalCard(Human human, int weight, int height, string healthstatus, int nomber);//Конструктор с параметрами
 	void MedicalCardRead(Human human);//Ввод информации о медкарте с клавиатуры
 	void MedicalcardDisplay();//Вывод информации о медкарте
 	void BodyMassIndex();//Метод рассчёта индекса массы тела персонажа

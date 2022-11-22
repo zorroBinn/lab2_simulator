@@ -7,7 +7,7 @@ protected:
 
 public:
 	Document(); //Конструктор без параметров
-	Document(int nomber); //Констркуток с параметром
+	Document(int nomber); //Конструктор с параметром
 	int GetNomber(); //Геттер номера
 };
 
