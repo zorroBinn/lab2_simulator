@@ -6,6 +6,7 @@ using std::string;
 //объект одежда
 class Clothes
 {
+protected:
 	int ClothesStatus, clothingsetcount; //статус состояния одежды, номер сета одежды
 	string Body, Pants, Shoes; //Верх, штаны, обувь
 	static int count;//Статическая переменная, отражает количество объектов класса одежда

@@ -1,11 +1,13 @@
 #pragma once
 #include "Human.h"
 #include <String>
+#include "Document.h"
 using namespace std;
 using std::string;
-//Объект медицинская карта персонажа
-class MedicalCard
+//Производный класс - медицинская карта персонажа
+class MedicalCard: public Document
 {
+protected:
 	Human human; //Персонаж
 	int Weight, Height; //Вес и рост
 	string HealthStatus; //Статус здоровья персонажа

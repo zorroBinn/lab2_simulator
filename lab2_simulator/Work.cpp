@@ -72,7 +72,7 @@ void Work::WorkRead(Human human)
 //Вывод информации о работе
 void Work::WorkDisplay()
 {
-	cout << "\nРабота персонажа " << human.HumanGetName() << ":\nМесто работы: " << NameWork << "\nОплата за работу: " << Payment << endl;
+	cout << "Работа персонажа " << human.HumanGetName() << ":\nМесто работы: " << NameWork << "\nОплата за работу: " << Payment << endl;
 }
 
 //Метод "работать"

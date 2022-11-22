@@ -6,6 +6,7 @@ using std::string;
 //Объект работа
 class Work
 {
+protected:
 	Human human; //Персонаж
 	string NameWork; //Название работы
 	int Payment; //Оплата за работу

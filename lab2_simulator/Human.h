@@ -6,6 +6,7 @@ using std::string;
 //Объект персонаж (человек)
 class Human
 {
+protected:
 	int Age; //Возраст
 	long int Moneybalance; //Игровой баланс
 	string Name, Sex; //Имя, пол

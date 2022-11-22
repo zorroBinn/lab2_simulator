@@ -6,6 +6,7 @@ using std::string;
 //Объект имущество
 class Realty
 {
+protected:
 	Human human; //Персонаж
 	string Housing, Vehicle;//Жильё, транспортное средство
 

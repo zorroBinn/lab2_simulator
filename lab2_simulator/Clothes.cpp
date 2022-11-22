@@ -80,7 +80,7 @@ void Clothes::ClothesRead()
 //Вывод информации об одежде
 void Clothes::ClothesDisplay()
 {
-	cout << "\nКомплект одежды номер " << clothingsetcount << ":\nВерхняя одежда : " << Body << "\nШтаны : " << Pants << "\nОбувь : " << Shoes << "\nСостояние одежды : " << ClothesStatus << endl;
+	cout << "Комплект одежды номер " << clothingsetcount << ":\nВерхняя одежда : " << Body << "\nШтаны : " << Pants << "\nОбувь : " << Shoes << "\nСостояние одежды : " << ClothesStatus << endl;
 }
 
 //Метод "Порвать одежду"

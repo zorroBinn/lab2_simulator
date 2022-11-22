@@ -85,8 +85,9 @@ void MedicalCard::MedicalCardRead(Human human)
 //Вывод информации о медкарте
 void MedicalCard::MedicalcardDisplay()
 {
+    cout << "Мелицинская карта номер " << nomber << ":" << endl;
     human.HumanNameSexAgeDisplay();
-    cout << "\nРост: " << Height << "\nВес: " << Weight << "\nСтатус здоровья: " << HealthStatus << endl;;
+    cout << "Рост: " << Height << "\nВес: " << Weight << "\nСтатус здоровья: " << HealthStatus << endl;;
 }
 
 //Метод рассчёта индекса массы тела персонажа
@@ -98,11 +99,11 @@ void MedicalCard::BodyMassIndex()
         height = Height;
         Index = weight / (height * height / 10000);
         if (Index > 18.5 && Index < 25.0)
-            cout << "Нормальный вес, ИМТ = " << Index;
+            cout << "Нормальный вес, ИМТ = " << Index << endl;
         else if (Index <= 18.5)
-            cout << "Дефицитный веса, ИМТ = " << Index;
+            cout << "Дефицитный веса, ИМТ = " << Index << endl;
         else
-            cout << "Избыточный вес, ИМТ = " << Index;
+            cout << "Избыточный вес, ИМТ = " << Index << endl;;
     }
 }
 
