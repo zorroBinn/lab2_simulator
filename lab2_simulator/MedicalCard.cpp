@@ -31,14 +31,14 @@ MedicalCard::MedicalCard(Human human, int weight, int height, string healthstatu
 void MedicalCard::MedicalCardRead(Human human)
 {
     bool correctinput = 0;
-    int weight, height;
-    string strstatus, strweight, strheight;
+    int weight, height, nom;
+    string strstatus, strweight, strheight, strnom;
     while (!correctinput) {
         try
         {
-            cout << "\nвведите рост персонажа в см: ";
+            cout << "Введите рост персонажа в см: " << endl;
             cin >> strheight;
-            cout << "\nвведите вес персонажа в кг: ";
+            cout << "Введите вес персонажа в кг: " << endl;;
             cin >> strweight;
             weight = stoi(strweight);
             height = stoi(strheight);
@@ -60,14 +60,14 @@ void MedicalCard::MedicalCardRead(Human human)
         }
         catch (const int ex)
         {
-            cout << "Вес не может быть равен " << ex << endl;
+            cout << "Вес или рост не может быть равен " << ex << endl;
         }
         cin.ignore(1024, '\n');
     }
     while (correctinput) {
         try
         {
-            cout << "\nУкажите статус здоровья персонажа: ";
+            cout << "Укажите статус здоровья персонажа: " << endl;
             getline(cin, strstatus);
             correctinput = 0;
         }
@@ -75,7 +75,24 @@ void MedicalCard::MedicalCardRead(Human human)
         {
             cout << "Некорректный ввод состояния здоровья" << endl;
         }
-    }
+    }/*
+    while (!correctinput) {
+        try {
+            cout << "Ввдите пятизначный номер документа: " << endl;
+            cin >> strnom;
+            nom = stoi(strnom);
+            if (nom < 10000 || nom > 99999)
+                throw nom;
+            correctinput = 1;
+        }
+        catch (invalid_argument& ex) {
+            cout << "Некорректный ввод номера документа" << endl;
+        }
+        catch (const int ex) {
+            cout << "Номер документа не может быть равен" << ex << endl;
+        }
+        cin.ignore(1024, '\n');
+    }*/
     this->human = human;
     this->HealthStatus = strstatus;
     this->Weight = weight;
@@ -141,6 +158,20 @@ void MedicalCard::SetHealthStatus()
         {
             cout << "Некорректный ввод состояния здоровья" << endl;
         }
+    }
+}
+
+MedicalCard& MedicalCard::operator= (Document& document)
+{
+    try {
+        if (this->Weight == 0 || this->Height == 0) {
+            throw "Невозможно присвоить номер документа, т.к. документ ещё не создан";
+        }
+        this->nomber = document.GetNomber();
+        return *this;
+    }
+    catch (string ex) {
+        cout << ex << endl;
     }
 }
 

@@ -23,6 +23,7 @@ public:
 	void BodyMassIndex(double& rez);//Возврат значения через ссылку
 	void SetHealthStatus(); //Метод изменения статуса здоровья
 	friend void CheatsHealthStatus(MedicalCard& medicalcard);//Дружественная функция - чит на здоровье
+	MedicalCard& operator= (Document& documen);
 };
 
 void CheatsHealthStatus(MedicalCard& medicalcard); //Чит на здоровье

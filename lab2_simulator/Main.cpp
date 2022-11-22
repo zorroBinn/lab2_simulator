@@ -10,12 +10,19 @@ using namespace std;
 int main() {
 	SetConsoleCP(1251);
 	SetConsoleOutputCP(1251);
-
-	Clothes cl(88, "1", "2", "3");
+	Document doc;
+	cout << doc.GetNomber() << endl;
+	Clothes cl;
+	cl.ClothesRead();
 	Human human(21, "Ивна", "м", cl);
-	MedicalCard md(human, 79, 182, "здоров");
-	md.MedicalcardDisplay();
+	
 
+	MedicalCard md;
+	md.MedicalCardRead(human);
+	
+	md.MedicalcardDisplay();
+	md = doc;
+	md.MedicalcardDisplay();
 	cin.get(); 
 	cin.get();
 }
