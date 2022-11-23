@@ -13,14 +13,13 @@ int main() {
 	
 	Clothes cl(77, "c", "b", "a");
 	Human human(21, "Иван", "м", cl);
-	
+	human.HumanCardDisplay();
 
 	MedicalCard md(human, 79, 182, "здоров", 12312);
 	md.MedicalcardDisplay();
 
 	Worker wk(human, "Барыга", 10000);
-	wk.WorkerDisplay();
+	wk.HumanCardDisplay();
 
-	cin.get();
 	cin.get();
 }

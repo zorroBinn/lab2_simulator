@@ -35,18 +35,13 @@ void Realty::RealtyRead(Human human)
     this->human = human;
 }
 
-//Вывод информации об имуществе
-void Realty::RealtyDisplay()
-{
-    cout << "\nИмущество персонажа " << human.GetName() << ":\nЖильё: " << Housing << "\nТранспортное средство: " << Vehicle << endl;
-}
-
 //Метод покупки нового имущества
 void Realty::BuyNew(Human human)
 {
     int choice, flag;
     string strbuynew;
-    cout << "\nВыберите для покупки:\n1 - Квартира(3 000 000р)\n2 - Коттедж(7 000 000р)\n3 - Вилла(20 000 000р)\n4 - Дворец(100 000 000р)\n5 - Мотоцикл(1 000 000)\n6 - Автомобиль(2 000 000)\n";
+    cout << endl;
+    cout << "Выберите для покупки:\n1 - Квартира(3 000 000р)\n2 - Коттедж(7 000 000р)\n3 - Вилла(20 000 000р)\n4 - Дворец(100 000 000р)\n5 - Мотоцикл(1 000 000)\n6 - Автомобиль(2 000 000)\n";
     do {
         flag = 0;
         choice = _getch();
@@ -127,5 +122,11 @@ void Realty::BuyNew(Human human)
     }
     }
     if (flag)
-        cout << "\nНедостаточно денег для покупки\n";
+        cout << "Недостаточно денег для покупки" << endl;
+}
+
+ostream& operator<<(ostream& out, Realty realty)
+{
+    out << "\nИмущество персонажа " << realty.human.GetName() << ":\nЖильё: " << realty.Housing << "\nТранспортное средство: " << realty.Vehicle;
+    return out;
 }

@@ -23,6 +23,7 @@ void Worker::WorkerRead(Human& human)
 	bool correctinput = 0;
 	int payment;
 	string strnamework, strpayment;
+	cout << endl;
 	while (!correctinput) {
 		try
 		{
@@ -61,15 +62,19 @@ void Worker::WorkerRead(Human& human)
 	*this = human;
 }
 
-//Вывод информации о работнике
-void Worker::WorkerDisplay()
+//Перегрузка метода базового класса в производном
+void Worker::HumanCardDisplay()
 {
-	cout << "Работа персонажа " << Name << ":\nМесто работы: " << NameWork << "\nОплата за работу: " << Payment << endl;
+	cout << endl;
+	cout << "Информация о занятости: " << endl;
+	Human::HumanCardDisplay();
+	cout << "Место работы: " << NameWork << "\nОплата за работу: " << Payment << endl;
 }
 
 //Метод "работать"
 void Worker::Working(Human &human)
 {
+	cout << endl;
 	cout << "За свою работу вы получили " << Payment << "р!" << endl;
 	human.ChangeMoney(Payment);
 	*this = human;
@@ -84,4 +89,11 @@ Worker& Worker::operator=(Human& human)
 	this->clothes = human.GetClothes();
 	this->Moneybalance = human.GetMoneyBalance();
 	return *this;
+}
+
+//Вывод информации о работнике (перегрузка <<)
+ostream& operator<<(ostream& out, Worker worker)
+{
+	out << "\nМесто работы "<< worker.Name << ":" << worker.NameWork << "\nОплата за работу: " << worker.Payment;
+	return out;
 }

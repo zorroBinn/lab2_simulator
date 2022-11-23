@@ -32,6 +32,7 @@ void Clothes::ClothesRead()
 	bool correctinput = 0;
 	int status;
 	string strbody, strpants, strshoes, strstatus;
+	cout << endl;
 	while (!correctinput) {
 		try
 		{
@@ -77,32 +78,24 @@ void Clothes::ClothesRead()
 	this->clothingsetcount = count;
 }
 
-//Вывод информации об одежде
-void Clothes::ClothesDisplay()
-{
-	cout << "Комплект одежды номер " << clothingsetcount << ":\nВерхняя одежда : " << Body << "\nШтаны : " << Pants << "\nОбувь : " << Shoes << "\nСостояние одежды : " << ClothesStatus << endl;
-}
-
 //Метод "Порвать одежду"
 void Clothes::TearClothes()
 {
-	if (this->ClothesStatus > 0) {
-		printf("\n\nВаша одежда порвалась!");
-		this->ClothesStatus -= 15;
-		if (this->ClothesStatus < 0)
-			this->ClothesStatus = 0;
-	}
+	cout << endl;
+	cout << "Ваша одежда порвалась!" << endl;
+	this->ClothesStatus -= 15;
+	if (this->ClothesStatus < 0)
+		this->ClothesStatus = 0;
 }
 
 //Метод "Зашить одежду"
 void Clothes::SewUpClothes()
 {
-	if (this->ClothesStatus >= 0) {
-		printf("\n\nВы зашили вашу одежду!");
-		this->ClothesStatus += 20;
-		if (this->ClothesStatus > 100)
-			this->ClothesStatus = 100;
-	}
+	cout << endl;
+	cout << "Вы зашили вашу одежду!" << endl;
+	this->ClothesStatus += 20;
+	if (this->ClothesStatus > 100)
+		this->ClothesStatus = 100;
 }
 
 //Статическая функция возврата количества сетов одежды
@@ -116,4 +109,11 @@ void CheatsSewUpClothes(Clothes& clothes)
 {
 	cout << "\nАктивирован чит, одежда полностью починена!" << endl;
 	clothes.ClothesStatus = 100;
+}
+
+//Вывод информации об одежде (перегрузка <<)
+ostream& operator<<(ostream& out, Clothes clothes)
+{
+	out << "\nКомплект одежды номер " << clothes.clothingsetcount << ":\nВерхняя одежда : " << clothes.Body << "\nШтаны : " << clothes.Pants << "\nОбувь : " << clothes.Shoes << "\nСостояние одежды : " << clothes.ClothesStatus;
+	return out;
 }

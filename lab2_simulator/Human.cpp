@@ -50,6 +50,7 @@ void Human::HumanRead()
 	string strname, strsex, strage;
 	int age;
 	bool correctinput = 0;
+	cout << endl;
 	while (!correctinput) {
 		try
 		{
@@ -93,17 +94,16 @@ void Human::HumanRead()
 	this->clothes = clothes;
 }
 
-//Вывод информации о персонаже
-void Human::HumanDisplay()
-{
-	cout << "Имя персонажа: " << Name << "\nПол персонажа: " << Sex << "\nВозраст персонажа: " << Age << "\nИгровой баланс денег: " << Moneybalance << "\nОдежда персонажа:\n";
-	clothes.ClothesDisplay();
-}
-
 //Вывод имени, пола, возраста (для медкарты)
 void Human::HumanNameSexAgeDisplay()
 {
 	cout << "Имя персонажа: " << Name << "\nПол персонажа: " << Sex << "\nВозраст персонажа: " << Age << endl;
+}
+
+//Вывод имени, возраста (перегружен в производном классе)
+void Human::HumanCardDisplay()
+{
+	cout << "Имя: " << Name << "\nВозраст: " << Age << endl;
 }
 
 //Метод изменения баланса
@@ -144,4 +144,12 @@ Human Human::operator++(int)
 void CheatsMoneyBalance(Human& human) {
 	cout << "\nАктивирован чит, баланс пополнен!" << endl;
 	human.Moneybalance = 1000000000;
+}
+
+//Вывод информации о персонаже(перегрузка <<)
+ostream& operator<<(ostream& out, Human human)
+{
+	out << "\nИмя персонажа: " << human.Name << "\nПол персонажа: " << human.Sex << "\nВозраст персонажа: " << human.Age << "\nИгровой баланс денег: " << human.Moneybalance << "\nОдежда персонажа:";
+	cout << human.clothes;
+	return out;
 }

@@ -42,6 +42,7 @@ void MedicalCard::MedicalCardRead(Human human)
     bool correctinput = 0;
     int weight, height, nom;
     string strstatus, strweight, strheight, strnom;
+    cout << endl;
     while (!correctinput) {
         try
         {
@@ -91,14 +92,6 @@ void MedicalCard::MedicalCardRead(Human human)
     this->Height = height;
 }
 
-//Вывод информации о медкарте
-void MedicalCard::MedicalcardDisplay()
-{
-    cout << "Мелицинская карта номер " << nomber << ":" << endl;
-    human.HumanNameSexAgeDisplay();
-    cout << "Рост: " << Height << "\nВес: " << Weight << "\nСтатус здоровья: " << HealthStatus << endl;;
-}
-
 //Метод рассчёта индекса массы тела персонажа
 void MedicalCard::BodyMassIndex()
 {
@@ -139,6 +132,7 @@ void MedicalCard::SetHealthStatus()
 {
     bool correctinput = 0;
     string strstatus;
+    cout << endl;
     cout << "Текущий статус здоровья: " << HealthStatus << "\nВведите новый статус здоровья: ";
     while (!correctinput) {
         try
@@ -156,12 +150,23 @@ void MedicalCard::SetHealthStatus()
 //Определение виртуальной функции базового класса
 void MedicalCard::ExtendDocument()
 {
+    cout << endl;
     cout << "Действие медицинской карты продлено!" << endl;
 }
 
 //Чит на здоровье
 void CheatsHealthStatus(MedicalCard& medicalcard)
 {
-    cout << "\nАктивирован чит, статус здоровья - Здоров!" << endl;
+    cout << endl;
+    cout << "Активирован чит, статус здоровья - Здоров!" << endl;
     medicalcard.HealthStatus = "Здоров";
+}
+
+//Вывод информации о медкарте(перегрузка <<)
+ostream& operator<<(ostream& out, MedicalCard medicalcard)
+{
+    out << "\nМелицинская карта номер " << medicalcard.nomber << ":" << endl;
+    medicalcard.human.HumanNameSexAgeDisplay();
+    out << "Рост: " << medicalcard.Height << "\nВес: " << medicalcard.Weight << "\nСтатус здоровья: " << medicalcard.HealthStatus;
+    return out;
 }

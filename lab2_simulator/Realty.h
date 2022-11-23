@@ -15,6 +15,6 @@ public:
 	Realty(Human human);//конструктор с одним параметром
 	Realty(Human human, string housing, string vehicle);//Конструктор с параметрами
 	void RealtyRead(Human human);//Ввод информации об имуществе с клавиатуры
-	void RealtyDisplay();//Вывод информации об имуществе
 	void BuyNew(Human human);//Метод покупки нового имущества
+	friend ostream& operator << (ostream& out, Realty realty);//Вывод информации об имуществе(перегрузка <<)
 };

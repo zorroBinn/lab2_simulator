@@ -18,14 +18,13 @@ public:
 	MedicalCard(Human human, int weight, int height, string healthstatus); //Конструктор с парметрами
 	MedicalCard(Human human, int weight, int height, string healthstatus, int nomber);//Конструктор производного класса с вызовом конструктора базового
 	void MedicalCardRead(Human human);//Ввод информации о медкарте с клавиатуры
-	void MedicalcardDisplay();//Вывод информации о медкарте
 	void BodyMassIndex();//Метод рассчёта индекса массы тела персонажа
 	void BodyMassIndex(double* rez);//Возврат значения через указатель
 	void BodyMassIndex(double& rez);//Возврат значения через ссылку
 	void SetHealthStatus(); //Метод изменения статуса здоровья
 	friend void CheatsHealthStatus(MedicalCard& medicalcard);//Дружественная функция - чит на здоровье
-	MedicalCard& operator= (Document& documen);
-	void ExtendDocument() override;
+	void ExtendDocument() override; 
+	friend ostream& operator << (ostream& out, MedicalCard medicalcard); 
 };
 
 void CheatsHealthStatus(MedicalCard& medicalcard); //Чит на здоровье
