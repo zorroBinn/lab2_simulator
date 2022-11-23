@@ -38,7 +38,7 @@ void Realty::RealtyRead(Human human)
 //Вывод информации об имуществе
 void Realty::RealtyDisplay()
 {
-    cout << "\nИмущество персонажа " << human.HumanGetName() << ":\nЖильё: " << Housing << "\nТранспортное средство: " << Vehicle << endl;
+    cout << "\nИмущество персонажа " << human.GetName() << ":\nЖильё: " << Housing << "\nТранспортное средство: " << Vehicle << endl;
 }
 
 //Метод покупки нового имущества
@@ -60,7 +60,7 @@ void Realty::BuyNew(Human human)
     flag = 0;
     switch (choice) {
     case '1': {
-        if (human.MoneyBalanceDisplay() > 3000000) {
+        if (human.GetMoneyBalance() > 3000000) {
             cout << "Вы купили квартиру за 3 000 000р!";
             this->human.ChangeMoney(-3000000);
             strbuynew = "Квартира";
@@ -71,7 +71,7 @@ void Realty::BuyNew(Human human)
         break;
     }
     case '2': {
-        if (human.MoneyBalanceDisplay() > 7000000) {
+        if (human.GetMoneyBalance() > 7000000) {
             cout << "Вы купили коттедж за 7 000 000р!";
             this->human.ChangeMoney(-7000000);
             strbuynew = "Коттедж";
@@ -82,7 +82,7 @@ void Realty::BuyNew(Human human)
         break;
     }
     case '3': {
-        if (human.MoneyBalanceDisplay() > 20000000) {
+        if (human.GetMoneyBalance() > 20000000) {
             cout << "Вы купили виллу за 20 000 000р!";
             this->human.ChangeMoney(-20000000);
             strbuynew = "Вилла";
@@ -93,7 +93,7 @@ void Realty::BuyNew(Human human)
         break;
     }
     case '4': {
-        if (human.MoneyBalanceDisplay() > 100000000) {
+        if (human.GetMoneyBalance() > 100000000) {
             cout << "Вы купили Дворец за 100 000 000р!";
             this->human.ChangeMoney(-100000000);
             strbuynew = "Дворец";
@@ -104,7 +104,7 @@ void Realty::BuyNew(Human human)
         break;
     }
     case '5': {
-        if (human.MoneyBalanceDisplay() > 1000000) {
+        if (human.GetMoneyBalance() > 1000000) {
             cout << "Вы купили мотоцикл за 1 000 000р!";
             this->human.ChangeMoney(-1000000);
             strbuynew = "Мотоцикл";
@@ -115,7 +115,7 @@ void Realty::BuyNew(Human human)
         break;
     }
     case '6': {
-        if (human.MoneyBalanceDisplay() > 2000000) {
+        if (human.GetMoneyBalance() > 2000000) {
             cout << "Вы купили автомобиль за 2 000 000р!";
             this->human.ChangeMoney(-2000000);
             strbuynew = "Автомобиль";

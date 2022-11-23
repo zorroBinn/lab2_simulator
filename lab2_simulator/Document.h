@@ -1,6 +1,6 @@
 #pragma once
 
-class Document //Базовый класс - Документ
+class Document //Базовый класс, виртуальный класс - Документ
 {
 protected: 
 	int nomber; //Номер документа
@@ -8,6 +8,6 @@ protected:
 public:
 	Document(); //Конструктор без параметров
 	Document(int nomber); //Конструктор с параметром
-	int GetNomber(); //Геттер номера
+	virtual void ExtendDocument() = 0; //Виртуальная функция продления срока действия документа;
 };
 

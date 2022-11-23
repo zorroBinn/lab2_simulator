@@ -29,6 +29,21 @@ Human::Human(int age, string name, string sex, Clothes clothes)
 	this->clothes = clothes;
 }
 
+int Human::GetAge()
+{
+	return this->Age;
+}
+
+string Human::GetSex()
+{
+	return this->Sex;
+}
+
+Clothes Human::GetClothes()
+{
+	return this->clothes;
+}
+
 //Ввод информации о персонаже с клавиатуры
 void Human::HumanRead()
 {
@@ -99,13 +114,13 @@ void Human::ChangeMoney(long int money)
 }
 
 //Метод вывода баланса (геттер)
-long int Human::MoneyBalanceDisplay()
+long int Human::GetMoneyBalance()
 {
 	return this->Moneybalance;
 }
 
 //Метод вывода имени персонажа (геттер)
-string Human::HumanGetName() 
+string Human::GetName() 
 {
 	return this->Name;
 }

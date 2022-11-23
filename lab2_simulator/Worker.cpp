@@ -1,32 +1,24 @@
-#include "Work.h"
+#include "Worker.h"
 #include <iostream>
-#include <String>
-
 using namespace std;
 
 //Конструктор без параметров
-Work::Work()
+Worker::Worker()
 {
 	this->NameWork = "";
 	this->Payment = 0;
 }
 
-//конструктор с одним параметром
-Work::Work(Human human)
-{
-	this->human = human;
-}
-
 //Конструктор с параметрами
-Work::Work(Human human, string namework, int payment)
+Worker::Worker(Human& human, string namework, int payment)
 {
 	this->NameWork = namework;
 	this->Payment = payment;
-	this->human = human;
+	*this = human;
 }
 
-//Ввод информации о работе с клавиатуры
-void Work::WorkRead(Human human)
+//Ввод информации о работнике с клавиатуры
+void Worker::WorkerRead(Human& human)
 {
 	bool correctinput = 0;
 	int payment;
@@ -34,7 +26,7 @@ void Work::WorkRead(Human human)
 	while (!correctinput) {
 		try
 		{
-			cout << "\nУкажите название работы: ";
+			cout << "Укажите название работы: ";
 			getline(cin, strnamework);
 			correctinput = 1;
 		}
@@ -46,7 +38,7 @@ void Work::WorkRead(Human human)
 	while (correctinput) {
 		try
 		{
-			cout << "\nУкажите оплату за работу: ";
+			cout << "Укажите оплату за работу: ";
 			cin >> strpayment;
 			payment = stoi(strpayment);
 			if (payment < 0) {
@@ -54,7 +46,7 @@ void Work::WorkRead(Human human)
 			}
 			correctinput = 0;
 		}
-		catch (invalid_argument &ex)
+		catch (invalid_argument& ex)
 		{
 			cout << "Некорректный ввод оплаты" << endl;
 		}
@@ -66,26 +58,28 @@ void Work::WorkRead(Human human)
 	}
 	this->NameWork = strnamework;
 	this->Payment = payment;
-	this->human = human;
 }
 
-//Вывод информации о работе
-void Work::WorkDisplay()
+void Worker::WorkerDisplay()
 {
-	cout << "Работа персонажа " << human.GetName() << ":\nМесто работы: " << NameWork << "\nОплата за работу: " << Payment << endl;
+	cout << "Работа персонажа " << Name << ":\nМесто работы: " << NameWork << "\nОплата за работу: " << Payment << endl;
 }
 
 //Метод "работать"
-void Work::Working(Human &human)
+void Worker::Working(Human &human)
 {
-	cout << "\nЗа свою работу вы получили " << Payment << "р!";
+	cout << "За свою работу вы получили " << Payment << "р!" << endl;
 	human.ChangeMoney(Payment);
-	this->human = human;
+	this->ChangeMoney(Payment);
 }
 
-//перегрузка оператора +
-Work Work::operator+(const Work& other)
+
+Worker& Worker::operator=(Human& human)
 {
-	Work temp = Work(this->human, this->NameWork + ", " + other.NameWork, this->Payment + other.Payment);
-	return temp;
+	this->Age = human.GetAge();
+	this->Name = human.GetName();
+	this->Sex = human.GetSex();
+	this->clothes = human.GetClothes();
+	this->Moneybalance = human.GetMoneyBalance();
+	return *this;
 }

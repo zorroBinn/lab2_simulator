@@ -133,6 +133,7 @@
     <ClInclude Include="MedicalCard.h" />
     <ClInclude Include="Realty.h" />
     <ClInclude Include="Work.h" />
+    <ClInclude Include="Worker.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Clothes.cpp" />
@@ -142,6 +143,7 @@
     <ClCompile Include="MedicalCard.cpp" />
     <ClCompile Include="Realty.cpp" />
     <ClCompile Include="Work.cpp" />
+    <ClCompile Include="Worker.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -14,14 +14,17 @@ protected:
 
 public:
 	Human(); //Конструктор без параметров
-	Human(Clothes clothes);
+	Human(Clothes clothes); //конструктор с одним параметром
 	Human(int age, string name, string sex, Clothes clothes);//Конструктор с параметрами
+	int GetAge();
+	string GetSex();
+	Clothes GetClothes();
 	void HumanRead(); //Ввод информации о персонаже с клавиатуры
 	void HumanDisplay(); //Вывод информации о персонаже
 	void HumanNameSexAgeDisplay(); //Вывод имени, пола, возраста (для медкарты)
 	void ChangeMoney(long int money); //Метод изменения баланса
-	long int MoneyBalanceDisplay(); //Метод вывода баланса (геттер)
-	string HumanGetName(); //Метод вывода имени персонажа (геттер)
+	long int GetMoneyBalance(); //Метод вывода баланса (геттер)
+	string GetName(); //Метод вывода имени персонажа (геттер)
 	friend void CheatsMoneyBalance(Human& human); //Дружественная функция - чит на деньги
 	Human& operator ++ (); //Перегрузка префиксного ++
 	Human operator ++ (int); //Перегрузка постфиксного ++

@@ -18,7 +18,16 @@ MedicalCard::MedicalCard(Human human)
     this->human = human;
 }
 
-//Конструктор с параметрами
+//Конструктор с парметрами
+MedicalCard::MedicalCard(Human human, int weight, int height, string healthstatus)
+{
+    this->Weight = weight;
+    this->Height = height;
+    this->HealthStatus = healthstatus;
+    this->human = human;
+}
+
+//Конструктор производного класса с вызовом конструктора базового
 MedicalCard::MedicalCard(Human human, int weight, int height, string healthstatus, int nomber) : Document(nomber)
 {
 	this->Weight = weight;
@@ -75,24 +84,7 @@ void MedicalCard::MedicalCardRead(Human human)
         {
             cout << "Некорректный ввод состояния здоровья" << endl;
         }
-    }/*
-    while (!correctinput) {
-        try {
-            cout << "Ввдите пятизначный номер документа: " << endl;
-            cin >> strnom;
-            nom = stoi(strnom);
-            if (nom < 10000 || nom > 99999)
-                throw nom;
-            correctinput = 1;
-        }
-        catch (invalid_argument& ex) {
-            cout << "Некорректный ввод номера документа" << endl;
-        }
-        catch (const int ex) {
-            cout << "Номер документа не может быть равен" << ex << endl;
-        }
-        cin.ignore(1024, '\n');
-    }*/
+    }
     this->human = human;
     this->HealthStatus = strstatus;
     this->Weight = weight;
@@ -161,18 +153,16 @@ void MedicalCard::SetHealthStatus()
     }
 }
 
-MedicalCard& MedicalCard::operator= (Document& document)
+//MedicalCard& MedicalCard::operator= (Document& document)
+//{
+//    
+//    this->nomber = document.GetNomber();
+//    return *this;
+//}
+
+void MedicalCard::ExtendDocument()
 {
-    try {
-        if (this->Weight == 0 || this->Height == 0) {
-            throw "Невозможно присвоить номер документа, т.к. документ ещё не создан";
-        }
-        this->nomber = document.GetNomber();
-        return *this;
-    }
-    catch (string ex) {
-        cout << ex << endl;
-    }
+    cout << "Действие медицинской карты продлено!" << endl;
 }
 
 //Чит на здоровье

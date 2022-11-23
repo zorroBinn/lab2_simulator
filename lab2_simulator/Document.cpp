@@ -11,8 +11,3 @@ Document::Document(int nomber) //Конструктор с параметром
 {
 	this->nomber = nomber;
 }
-
-int Document::GetNomber() //Геттер номера
-{
-	return this->nomber;
-}
