@@ -58,8 +58,10 @@ void Worker::WorkerRead(Human& human)
 	}
 	this->NameWork = strnamework;
 	this->Payment = payment;
+	*this = human;
 }
 
+//Вывод информации о работнике
 void Worker::WorkerDisplay()
 {
 	cout << "Работа персонажа " << Name << ":\nМесто работы: " << NameWork << "\nОплата за работу: " << Payment << endl;
@@ -70,10 +72,10 @@ void Worker::Working(Human &human)
 {
 	cout << "За свою работу вы получили " << Payment << "р!" << endl;
 	human.ChangeMoney(Payment);
-	this->ChangeMoney(Payment);
+	*this = human;
 }
 
-
+//Перегрузка оператора присваивания производному классу базового 
 Worker& Worker::operator=(Human& human)
 {
 	this->Age = human.GetAge();

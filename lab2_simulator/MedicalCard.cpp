@@ -139,7 +139,7 @@ void MedicalCard::SetHealthStatus()
 {
     bool correctinput = 0;
     string strstatus;
-    cout << "\nТекущий статус здоровья: " << HealthStatus << "\nВведите новый статус здоровья: ";
+    cout << "Текущий статус здоровья: " << HealthStatus << "\nВведите новый статус здоровья: ";
     while (!correctinput) {
         try
         {
@@ -153,13 +153,7 @@ void MedicalCard::SetHealthStatus()
     }
 }
 
-//MedicalCard& MedicalCard::operator= (Document& document)
-//{
-//    
-//    this->nomber = document.GetNomber();
-//    return *this;
-//}
-
+//Определение виртуальной функции базового класса
 void MedicalCard::ExtendDocument()
 {
     cout << "Действие медицинской карты продлено!" << endl;

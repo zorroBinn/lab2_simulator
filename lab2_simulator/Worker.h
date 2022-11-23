@@ -14,8 +14,7 @@ public:
 	Worker();//Конструктор без параметров
 	Worker(Human& human, string namework, int payment);//Конструктор с параметрами
 	void WorkerRead(Human& human);//Ввод информации о работнике с клавиатуры
-	void WorkerDisplay();
+	void WorkerDisplay(); //Вывод информации о работнике
 	void Working(Human &human);//Метод "работать"
-	Worker& operator= (Human& human);
+	Worker& operator= (Human& human); //Перегрузка оператора присваивания производному классу базового
 };
-
