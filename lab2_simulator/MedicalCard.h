@@ -23,8 +23,8 @@ public:
 	void BodyMassIndex(double& rez);//Возврат значения через ссылку
 	void SetHealthStatus(); //Метод изменения статуса здоровья
 	friend void CheatsHealthStatus(MedicalCard& medicalcard);//Дружественная функция - чит на здоровье
-	void ExtendDocument() override; 
-	friend ostream& operator << (ostream& out, MedicalCard medicalcard); 
+	void ExtendDocument() override; //определение виртуальной функции в производном классе
+	friend ostream& operator << (ostream& out, MedicalCard medicalcard); //Вывод информации о медкарте(перегрузка <<)
 };
 
 void CheatsHealthStatus(MedicalCard& medicalcard); //Чит на здоровье

@@ -4,6 +4,7 @@
 using namespace std;
 using std::string;
 
+//Производный класс работник
 class Worker : public Human
 {
 protected:

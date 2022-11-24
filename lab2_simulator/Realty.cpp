@@ -125,6 +125,7 @@ void Realty::BuyNew(Human human)
         cout << "Недостаточно денег для покупки" << endl;
 }
 
+//Вывод информации об имуществе(перегрузка <<)
 ostream& operator<<(ostream& out, Realty realty)
 {
     out << "\nИмущество персонажа " << realty.human.GetName() << ":\nЖильё: " << realty.Housing << "\nТранспортное средство: " << realty.Vehicle;
