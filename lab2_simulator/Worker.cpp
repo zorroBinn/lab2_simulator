@@ -94,6 +94,6 @@ Worker& Worker::operator=(Human& human)
 //Вывод информации о работнике (перегрузка <<)
 ostream& operator<<(ostream& out, Worker worker)
 {
-	out << "\nМесто работы "<< worker.Name << ":" << worker.NameWork << "\nОплата за работу: " << worker.Payment;
+	out << "\nРаботник: " << worker.Name << "\nМесто работы: " << worker.NameWork << "\nОплата за работу: " << worker.Payment;
 	return out;
 }

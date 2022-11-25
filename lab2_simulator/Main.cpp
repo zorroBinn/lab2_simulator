@@ -12,16 +12,27 @@ int main() {
 	SetConsoleCP(1251);
 	SetConsoleOutputCP(1251);
 	
-	Clothes cl(77, "c", "b", "a");
-	Human human(21, "Иван", "м", cl);
-	Human human2(21, "47", "they", cl);
+	Clothes cl(99, "Футболка", "Штаны", "Кеды");
+	cout << cl << endl; //Вывод через перегрузку <<
+	Human human(20, "Иван", "М", cl);
+	Worker wk;
+	wk = human; //Присвоение объекту производного класса объекта базового
+	cout << wk << endl;
+	//Вызов конструктора базового класса в конструкторе с параметрами производного
+	MedicalCard* md = new MedicalCard(human, 78, 182, "Здоров", 11111);
+	cout << *md << endl;
+	//Вызов виртуальной функции
+	md->ExtendDocument();
+	
+	Human* h = new Human(40, "name", "M", cl);
+	Worker* w = new Worker(*h, "Бизнесмен", 80000);
+	h->HumanCardDisplay(); 
+	w->HumanCardDisplay();//Переопределение функции
 
-	MedicalCard md(human2, 79, 182, "здоров", 12312);
-	cout << md << endl;
-
-	Worker wk(human2, "Барыга", 10000);
-	CheatsMoneyBalance(wk);
-	cout << "Богаче: " << WhoIsRicher<Human>::WhoisRicher(human, wk);
+	//Тест шаблонного класса
+	Worker wk2(human, "Рекламщик", 10000);
+	CheatsMoneyBalance(wk2);
+	cout << "Богаче: " << WhoIsRicher<Human>::WhoisRicher(*h, wk);
 
 	cin.get();
 }
