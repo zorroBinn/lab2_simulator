@@ -78,6 +78,21 @@ void Clothes::ClothesRead()
 	this->clothingsetcount = count;
 }
 
+void Clothes::ClothesDisplay()
+{
+	cout << "Комплект одежды номер " << clothingsetcount << ":\nВерхняя одежда : " << Body << "\nШтаны : " << Pants << "\nОбувь : " << Shoes << "\nСостояние одежды : " << ClothesStatus << endl;
+}
+
+int Clothes::GetClothingSetCount()
+{
+	return this->clothingsetcount;
+}
+
+int Clothes::GetClothesStatus()
+{
+	return this->ClothesStatus;
+}
+
 //Метод "Порвать одежду"
 void Clothes::TearClothes()
 {
