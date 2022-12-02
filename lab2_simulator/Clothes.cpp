@@ -93,6 +93,21 @@ int Clothes::GetClothesStatus()
 	return this->ClothesStatus;
 }
 
+string Clothes::getBody()
+{
+	return this->Body;
+}
+
+string Clothes::getShoes()
+{
+	return this->Shoes;
+}
+
+string Clothes::getPants()
+{
+	return this->Pants;
+}
+
 //Метод "Порвать одежду"
 void Clothes::TearClothes()
 {

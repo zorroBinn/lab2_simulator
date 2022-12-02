@@ -1,13 +1,13 @@
 #include "Wardrobe.h"
 
-bool ComparisonByClothesStatus(Clothes a, Clothes b) {
-	return a.GetClothesStatus() > b.GetClothesStatus();
+bool ComparisonByClothesStatus(Clothes* a, Clothes* b) {
+	return a->GetClothesStatus() > b->GetClothesStatus();
 }
-bool ComparisonByClothingSetCount(Clothes a, Clothes b) {
-	return a.GetClothingSetCount() < b.GetClothingSetCount();
+bool ComparisonByClothingSetCount(Clothes* a, Clothes* b) {
+	return a->GetClothingSetCount() < b->GetClothingSetCount();
 }
 
-void Wardrobe::Add(Clothes clothes)
+void Wardrobe::Add(Clothes* clothes)
 {
 	wardrobe.push_back(clothes);
 }
@@ -24,21 +24,22 @@ void Wardrobe::Read()
 	Clothes* clothes = new Clothes[N];
 	for (int i = 0; i < N; i++) {
 		clothes[i].ClothesRead();
-		wardrobe.push_back(clothes[i]);
+		wardrobe.push_back(&clothes[i]);
 	}
 }
 
 void Wardrobe::Display()
 {
-	for (int i = 0; i < wardrobe.size(); i++) {
-		wardrobe[i].ClothesDisplay();
+	vector<Clothes*>::iterator it;
+	for (it = wardrobe.begin(); it != wardrobe.end(); ++it) {
+		(*it)->ClothesDisplay();
 	}
 }
 
 void Wardrobe::Delete(int num)
 {
-	if (num > wardrobe.size() || num < 0) throw new exception("Выход за пределы значений");
-	wardrobe.erase(wardrobe.begin() + num - 1);
+	vector<Clothes*>::iterator it = wardrobe.begin() + num - 1;
+	wardrobe.erase(it);
 }
 
 void Wardrobe::SortByClothesStatus()
@@ -54,13 +55,14 @@ void Wardrobe::SortByClothingSetCount()
 void Wardrobe::SearchByClothesStatus(int st)
 {
 	bool flag = 0;
-	for (int i = 0; i < wardrobe.size(); i++) {
-		if (wardrobe[i].GetClothesStatus() == st) {
+	vector<Clothes*>::iterator it;
+	for (it = wardrobe.begin(); it != wardrobe.end(); ++it) {
+		if ((*it)->GetClothesStatus() == st) {
 			if (!flag) {
 				cout << "Сеты одежды с состоянием " << st << "%:" << endl;
 				flag = 1;
 			}
-			wardrobe[i].ClothesDisplay();
+			(*it)->ClothesDisplay();
 		}
 	}
 	if (!flag) {
@@ -71,10 +73,11 @@ void Wardrobe::SearchByClothesStatus(int st)
 void Wardrobe::SearchByClothingSetCount(int count)
 {
 	bool flag = 0;
-	for (int i = 0; i < wardrobe.size(); i++) {
-		if (wardrobe[i].GetClothingSetCount() == count) {
+	vector<Clothes*>::iterator it;
+	for (it = wardrobe.begin(); it != wardrobe.end(); ++it) {
+		if ((*it)->GetClothingSetCount() == count) {
 			cout << "Сет одежды под номером " << count << ":" << endl;
-			wardrobe[i].ClothesDisplay();
+			(*it)->ClothesDisplay();
 			flag = 1;
 		}
 	}

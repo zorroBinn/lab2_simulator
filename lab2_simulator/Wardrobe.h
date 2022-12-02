@@ -9,10 +9,10 @@ using namespace std;
 class Wardrobe //Класс гардероб
 {
 protected: 
-	vector<Clothes> wardrobe; //Вектор класса одежда
+	vector<Clothes*> wardrobe; //Вектор класса одежда
 
 public:
-	void Add(Clothes clothes); //Метод добавления готовой одежды
+	void Add(Clothes* clothes); //Метод добавления готовой одежды
 	void Read(); //Метод ввода одежды с клавиатуры и добавления в вектор
 	void Display(); //Метод вывода объектов вектора 
 	void Delete(int num); //Метод удаления объекта из вектора

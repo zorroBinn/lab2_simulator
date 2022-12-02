@@ -15,9 +15,12 @@ public:
 	Clothes(); //Конструктор без параметров
 	Clothes(int conditions, string body, string pants, string shoes); //Конструктор с параметрами
 	void ClothesRead(); //Ввод информации об одежде с клавиатуры
-	void ClothesDisplay();
+	virtual void ClothesDisplay();
 	int GetClothingSetCount();
 	int GetClothesStatus();
+	string getBody();
+	string getShoes();
+	string getPants();
 	void TearClothes(); //Метод "Порвать одежду"
 	void SewUpClothes(); //Метод "Зашить одежду"
 	static int Getcount(); //Статическая функция возврата количества сетов одежды
